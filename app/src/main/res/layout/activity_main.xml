@@ -37,6 +37,8 @@
             android:layout_alignStart="@+id/button10"
             android:layout_below="@+id/button10"
             android:layout_marginTop="78dp"
-            android:text="@string/sair" />
+            android:text="@string/sair"
+            android:onClick="clickexit"/>
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

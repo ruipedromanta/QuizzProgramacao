@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
         button10 = findViewById(R.id.button10);
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void clickexit(View v){
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
 
     public void openScore() {
         Intent intent = new Intent(this, Score.class);
