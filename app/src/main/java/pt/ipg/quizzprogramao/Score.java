@@ -1,43 +1,23 @@
 package pt.ipg.quizzprogramao;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+/**
+ * Created by ruima on 06/06/2018.
+ */
 
-public class Score extends AppCompatActivity {
-    private Button button;
+public class Score {
+    private int id;
+    private int score;
+    private String name;
 
+    public int getId() {return id;}
 
+    public void setId(int id) {this.id = id;}
 
-    Button button7;
-    TextView textView, textView2, textView3, textView4, textView5, textView6;
+    public int getScore() {return score;}
 
+    public void setScore(int score) {this.score = score;}
 
+    public String getName() {return name;}
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score);
-
-
-        button7 = findViewById(R.id.button7);
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMainActivity();
-
-            }
-        });
-    }
-
-
-    public void openMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+    public void setName(String name) {this.name = name;}
 }
-

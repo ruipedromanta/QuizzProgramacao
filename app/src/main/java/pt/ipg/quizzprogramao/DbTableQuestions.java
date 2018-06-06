@@ -9,9 +9,8 @@ import android.provider.BaseColumns;
 
 public class DbTableQuestions implements BaseColumns {
     public static final String FILED_QUESTION = "question";
-    public static final String FILED_ID_SCORE = "score";
+    public static final String FILED_ID_SCORE = "idScore";
     public static final String FIELD_ID_SCORE = FILED_ID_SCORE;
-    public static final String FILED_SCORE = FIELD_ID_SCORE;
     public static final String TABLE_NAME = "questions";
     private SQLiteDatabase db;
 

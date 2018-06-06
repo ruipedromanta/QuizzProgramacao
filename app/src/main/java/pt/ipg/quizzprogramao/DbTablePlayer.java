@@ -28,7 +28,8 @@ public class DbTablePlayer implements BaseColumns {
         db.execSQL(
                 "CREATE TABLE " + TABLE_NAME + "(" +
                         _ID + "INTEGGER PRIMARY KEY AUTOINCREMENT, " +
-                        FIELD_NAME + "TEXT NOT NULL, " + BEST_SCORE + "INTEGER" +
+                        FIELD_NAME + "TEXT NOT NULL, " +
+                        BEST_SCORE + "INTEGER" +
                         ")"
 
         );
