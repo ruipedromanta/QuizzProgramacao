@@ -9,10 +9,12 @@ import android.provider.BaseColumns;
 
 public class DbTableScore implements BaseColumns {
 
-    public static final String TABLE_NAME = "score";
-    public static final String FIELD_SCORE = TABLE_NAME;
+
+
     public static final String FILED_NAME = "name";
     public static final String FIELD_NAME = FILED_NAME;
+    public static final String FIELD_SCORE = "score";
+    public static final String TABLE_NAME = FIELD_SCORE + "s";
     private SQLiteDatabase db;
 
     public DbTableScore(SQLiteDatabase db) {
@@ -24,7 +26,7 @@ public class DbTableScore implements BaseColumns {
 
     public void create() {
         db.execSQL(
-                "CREATE TABLE " + TABLE_NAME + "(" +
+                "CREATE TABLE " + TABLE_NAME +   "(" +
                         _ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         FIELD_SCORE + "INTEGER," +
                         FILED_NAME + "TEXT NOT NULL," +

@@ -12,6 +12,7 @@ public class DbTableQuestions implements BaseColumns {
     public static final String FILED_ID_SCORE = "score";
     public static final String FIELD_ID_SCORE = FILED_ID_SCORE;
     public static final String FILED_SCORE = FIELD_ID_SCORE;
+    public static final String TABLE_NAME = "questions";
     private SQLiteDatabase db;
 
     public DbTableQuestions(SQLiteDatabase db) {
@@ -24,7 +25,7 @@ public class DbTableQuestions implements BaseColumns {
 
     public void create() {
         db.execSQL(
-                "CREATE TABLE " + FILED_QUESTION + " (" +
+                "CREATE TABLE " + TABLE_NAME + " " +   " (" +
                         _ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
                         FILED_QUESTION + "TEXT NOT NULL," +
                         FILED_ID_SCORE + "INTEGER," +

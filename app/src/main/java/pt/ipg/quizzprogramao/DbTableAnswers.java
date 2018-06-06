@@ -11,7 +11,7 @@ public class DbTableAnswers implements BaseColumns {
 
 
     public static final String FILED_ANSWER = "answer";
-    public static final String FILED_QUESTION = "question";
+    public static final String FILED_ID_QUESTION = "idquestion";
     private SQLiteDatabase db;
 
     public DbTableAnswers(SQLiteDatabase db) {
@@ -26,8 +26,11 @@ public class DbTableAnswers implements BaseColumns {
                 "CREATE TABLE " + FILED_ANSWER + "s (" +
                         _ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
                         FILED_ANSWER + "TEXT NOT NULL," +
-                        FILED_QUESTION + "TEXT NOT NULL," +
-                        ""
+                        FILED_ID_QUESTION + "TEXT NOT NULL," +
+                        "FOREIGN KEY( " + FILED_ID_QUESTION +") REFERENCES " +
+                            DbTableQuestions.TABLE_NAME +
+                                "(" + DbTableQuestions._ID+")" +
+                        ")"
 
 
         );
