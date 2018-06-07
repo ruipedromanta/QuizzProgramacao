@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pt.ipg.quizzprogramao.MainActivity">
+    tools:context="pt.ipg.quizzprogramao.MainActivity"
+    android:background="@drawable/fundo">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
             android:layout_alignLeft="@+id/button9"
             android:layout_alignStart="@+id/button9"
             android:layout_below="@+id/button9"
-            android:layout_marginTop="78dp"
+            android:layout_marginTop="99dp"
             android:text="@string/melhores_pontuaçoes" />
 
         <Button
@@ -34,11 +35,11 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_alignLeft="@+id/button10"
+            android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/button10"
-            android:layout_below="@+id/button10"
-            android:layout_marginTop="78dp"
-            android:text="@string/sair"
-            android:onClick="clickexit"/>
+            android:layout_marginBottom="48dp"
+            android:onClick="clickexit"
+            android:text="@string/sair" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
