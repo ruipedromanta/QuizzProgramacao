@@ -83,6 +83,22 @@ public class QuizzDbTests {
 
     }
 
+
+    @Test
+
+    public void scoreCRUDtest () {
+        DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(getContext());
+
+        SQLiteDatabase db = dbQuizzOpenHelper.getWritableDatabase();
+
+        DbTablePlayer tablePlayer = new DbTablePlayer(db);
+
+        Player player = new Player();
+        player.setName("Rui");
+
+
+    }
+
     private long insertPlayer(DbTablePlayer tablePlayer,Player player) {
         long id = tablePlayer.insert(
                 DbTablePlayer.getContentValues(player)
