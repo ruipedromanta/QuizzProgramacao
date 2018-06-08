@@ -11,8 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.security.AccessControlContext;
-
 import static android.support.test.InstrumentationRegistry.getContext;
 import static org.junit.Assert.*;
 
@@ -25,11 +23,8 @@ import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class QuizzDbTests {
-
     @Before
-    public void setUp(){
-        getContext().deleteDatabase(DbQuizzOpenHelper.DATABASE_NAME);
-    }
+    public void setUp(){ getContext().deleteDatabase(DbQuizzOpenHelper.DATABASE_NAME);}
 
     @Test
     public  void openQuizzDbTests() {
@@ -39,7 +34,7 @@ public class QuizzDbTests {
         DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(appContext);
 
         SQLiteDatabase db = dbQuizzOpenHelper.getReadableDatabase();
-        assertTrue("Could not open/create books database", db.isOpen());
+        assertTrue("Could not open/create quizz database", db.isOpen());
         db.close();
     }
 
@@ -61,7 +56,7 @@ public class QuizzDbTests {
 
         //query/read C(R)UD
 
-        player = ReadFirstPlayer(tablePlayer, 7,"Pedr", id);
+        player = ReadFirstPlayer(tablePlayer, 7,"Pedr", id,);
 
         //update CR(U)D
         player.setName("Pedro");
@@ -88,9 +83,28 @@ public class QuizzDbTests {
 
     }
 
+    private long insertPlayer(DbTablePlayer tablePlayer,Player player) {
+        long id = tablePlayer.insert(
+                DbTablePlayer.getContentValues(player)
+        );
 
+        assertNotEquals("Failed to insert a player", -1, id);
 
+        return id;
+    }
 
+    @NonNull
+    private Player ReadFirstPlayer(DbTablePlayer tablePlayer, long expected, String expectedName, long expectedId) {
+        Cursor cursor = tablePlayer.query(DbTablePlayer.ALL_COLUMNS, null, null, null, null, null);
+        assertEquals("Failed to read player", 1, cursor.getCount());
 
+        assertTrue("Failed to read the first player", cursor.moveToNext());
 
+        Player player = DbTablePlayer.getCurrentPlayerFromCursor(cursor);
+        assertEquals("Incorret best score", expected, player.getBest_score());
+        assertEquals("Incorrect player name", expectedName, player.getName());
+        assertEquals("Incorrect player id", expectedId, player.getId());
+
+        return player;
+    }
 }
