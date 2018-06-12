@@ -19,8 +19,18 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase db) {
+        DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
+        dbTablePlayer.create();
 
+        DbTableScore dbTableScore = new DbTableScore(db);
+        dbTableScore.create();
+
+        DbTableQuestions dbTableQuestions = new DbTableQuestions(db);
+        dbTableQuestions.create();
+
+        DbTableAnswers dbTableAnswers = new DbTableAnswers(db);
+        dbTableAnswers.create();
     }
 
     @Override
