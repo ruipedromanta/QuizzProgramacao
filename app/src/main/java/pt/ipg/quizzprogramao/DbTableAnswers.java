@@ -50,6 +50,23 @@ public class DbTableAnswers implements BaseColumns {
         return values;
     }
 
+    public static Answers getCurrentBookFromCursor(Cursor cursor) {
+        final int posId = cursor.getColumnIndex(_ID);
+        final int posanswer = cursor.getColumnIndex(FILED_ANSWER);
+        final int posidquestion = cursor.getColumnIndex(FILED_ID_QUESTION);
+
+
+        Answers answers = new Answers();
+
+        answers.setId(cursor.getInt(posId));
+        answers.setAnswer(cursor.getString(posanswer));
+        answers.setIdquestion(cursor.getInt(posidquestion));
+
+
+        return answers;
+    }
+
+
 
     public long insert(ContentValues values){
         return db.insert(TABLE_NAME, null, values);
