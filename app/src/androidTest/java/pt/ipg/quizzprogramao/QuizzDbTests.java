@@ -152,6 +152,49 @@ public class QuizzDbTests {
 
     }
 
+    @Test
+    public void questionsCRUDtest() {
+
+
+
+
+
+    };
+
+    DbTableQuestions tableQuestions = new DbTableQuestions(db);
+
+
+    //create/Insert
+
+    Questions questions = new Questions();
+
+    questions.set
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private Score ReadFirstScore(DbTableScore tableScore, int expectedScore, long expectedidName, long expectedid) {
         Cursor cursor = tableScore.query(DbTableScore.ALL_COLUMNS, null,null,null,null,null);
         assertEquals("Failed to read Score", 1, cursor.getCount());

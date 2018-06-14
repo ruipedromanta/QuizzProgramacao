@@ -20,7 +20,9 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="87dp"
-            android:text="@string/jogar" />
+            android:background="@drawable/estilo_botoes"
+            android:text="@string/jogar"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/button10"
@@ -30,7 +32,9 @@
             android:layout_alignStart="@+id/button9"
             android:layout_below="@+id/button9"
             android:layout_marginTop="99dp"
-            android:text="@string/melhores_pontuaçoes" />
+            android:text="@string/melhores_pontuaçoes"
+            android:textColor="@color/white"
+            android:background="@drawable/estilo_botoes"/>
 
         <Button
             android:id="@+id/button11"
@@ -39,9 +43,12 @@
             android:layout_alignLeft="@+id/button10"
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/button10"
-            android:layout_marginBottom="48dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/estilo_botoes"
             android:onClick="clickexit"
-            android:text="@string/sair" />
+            android:padding="15dp"
+            android:text="@string/sair"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
