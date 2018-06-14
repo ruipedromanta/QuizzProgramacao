@@ -12,7 +12,6 @@ import android.provider.BaseColumns;
 public class DbTableQuestions implements BaseColumns {
     public static final String FILED_QUESTION = "question";
     public static final String FILED_ID_SCORE = "idScore";
-    public static final String FIELD_ID_SCORE = FILED_ID_SCORE;
     public static final String TABLE_NAME = "questions";
     private SQLiteDatabase db;
 
@@ -30,7 +29,7 @@ public class DbTableQuestions implements BaseColumns {
                         _ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
                         FILED_QUESTION + "TEXT NOT NULL," +
                         FILED_ID_SCORE + "INTEGER," +
-                        "FOREIGN KEY(" + FIELD_ID_SCORE +")REFERENCES " +
+                        "FOREIGN KEY(" + FILED_ID_SCORE +")REFERENCES " +
                         DbTableScore.TABLE_NAME +
                         "(" + DbTableScore._ID+")" +
 
@@ -51,6 +50,23 @@ public class DbTableQuestions implements BaseColumns {
 
         return values;
 
+    }
+
+
+
+    public static Questions getCurrentBookFromCursor(Cursor cursor) {
+        final int posId = cursor.getColumnIndex(_ID);
+        final int posQuestion = cursor.getColumnIndex(FILED_QUESTION);
+        final int posidScore = cursor.getColumnIndex(FILED_ID_SCORE);
+
+
+        Questions questions = new Questions();
+
+        questions.setId(cursor.getInt(posId));
+        questions.setQuestion(cursor.getString(posQuestion));
+        questions.setIdScore(cursor.getInt(posidScore));
+
+        return questions;
     }
 
     public long insert(ContentValues values){
