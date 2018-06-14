@@ -57,6 +57,24 @@ public class DbTableScore implements BaseColumns {
         return values;
     }
 
+    public static Score getCurrentScoreFromCursor (Cursor cursor) {
+        final int posId = cursor.getColumnIndex(_ID);
+        final int posScore = cursor.getColumnIndex(FIELD_SCORE);
+        final int posidName = cursor.getColumnIndex(FIELD_ID_NAME);
+
+        Score score = new Score();
+
+        score.setId(cursor.getInt(posId));
+        score.setScore(cursor.getInt(posScore));
+        score.setIdName(cursor.getInt(posidName));
+
+        return score;
+    }
+
+
+
+
+
     public long insert(ContentValues values){
         return db.insert(TABLE_NAME, null, values);
     }
