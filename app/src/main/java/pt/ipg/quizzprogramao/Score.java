@@ -7,17 +7,29 @@ package pt.ipg.quizzprogramao;
 public class Score {
     private int id;
     private int score;
-    private String name;
+    private int idName;
 
-    public int getId() {return id;}
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) {this.id = id;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public int getScore() {return score;}
+    public int getScore() {
+        return score;
+    }
 
-    public void setScore(int score) {this.score = score;}
+    public void setScore(int score) {
+        this.score = score;
+    }
 
-    public String getName() {return name;}
+    public int getIdName() {
+        return idName;
+    }
 
-    public void setName(String name) {this.name = name;}
+    public void setIdName(int idName) {
+        this.idName = idName;
+    }
 }

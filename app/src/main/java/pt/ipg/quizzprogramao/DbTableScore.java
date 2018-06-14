@@ -14,9 +14,12 @@ public class DbTableScore implements BaseColumns {
 
 
     public static final String FILED_NAME = "name";
-    public static final String FIELD_NAME = FILED_NAME;
     public static final String FIELD_SCORE = "score";
+    public static final String FIELD_ID_NAME = "idName";
     public static final String TABLE_NAME = FIELD_SCORE + "s";
+
+    public static final String [] ALL_COLUMNS = new String[] {_ID, FIELD_SCORE,FIELD_ID_NAME};
+
     private SQLiteDatabase db;
 
     public DbTableScore(SQLiteDatabase db) {
@@ -31,8 +34,8 @@ public class DbTableScore implements BaseColumns {
                 "CREATE TABLE " + TABLE_NAME +   "(" +
                         _ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         FIELD_SCORE + "INTEGER," +
-                        FILED_NAME + "TEXT NOT NULL," +
-                        "FOREIGN KEY(" + FIELD_NAME + ") REFERENCES " +
+                        FIELD_ID_NAME + "INTEGER," +
+                        "FOREIGN KEY(" + FIELD_ID_NAME + ") REFERENCES " +
                         DbTablePlayer.TABLE_NAME +
                         "(" + DbTablePlayer._ID +")" +
                         ")"
@@ -49,7 +52,7 @@ public class DbTableScore implements BaseColumns {
 
         values.put(_ID, score.getId());
         values.put(FIELD_SCORE, score.getScore());
-        values.put(FILED_NAME, score.getName());
+        values.put(FILED_NAME, score.getIdName());
 
         return values;
     }
@@ -86,8 +89,8 @@ public class DbTableScore implements BaseColumns {
 
 
 
-    private Cursor query (String[] colums, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-        return db.query(TABLE_NAME, colums, selection, selectionArgs, groupBy, having, orderBy);
+    Cursor query(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
+        return db.query(TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
 }

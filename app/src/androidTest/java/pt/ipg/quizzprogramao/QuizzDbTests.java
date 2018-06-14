@@ -2,8 +2,8 @@ package pt.ipg.quizzprogramao;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.annotation.NonNull;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.NonNull;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -11,8 +11,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.InstrumentationRegistry.getContext;
 import static org.junit.Assert.*;
+
+/**
+ * Instrumented test, which will execute on an Android device.
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
+
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -24,7 +30,8 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class QuizzDbTests {
     @Before
-    public void setUp(){ getContext().deleteDatabase(DbQuizzOpenHelper.DATABASE_NAME);}
+    public void setUp(){
+        getContext().deleteDatabase(DbQuizzOpenHelper.DATABASE_NAME); }
 
     @Test
     public  void openQuizzDbTests() {
@@ -56,7 +63,7 @@ public class QuizzDbTests {
 
         //query/read C(R)UD
 
-        player = ReadFirstPlayer(tablePlayer, 7,"Pedr", id,);
+        player = ReadFirstPlayer(tablePlayer, 7,"Pedr", id);
 
         //update CR(U)D
         player.setName("Pedro");
@@ -96,6 +103,70 @@ public class QuizzDbTests {
         Player player = new Player();
         player.setName("Rui");
 
+        long idName = insertPlayer(tablePlayer, player);
+        DbTableScore tableScore = new DbTableScore(db);
+
+        //insert/create (C)RUD
+
+        Score score = new Score();
+
+        score.setScore(14);
+        score.setIdName((int) idName);
+
+        long id = tableScore.insert(
+                DbTableScore.getContentValues(score)
+        );
+
+        assertNotEquals("Failed to insert score", -1, id);
+        
+        
+        // query/read C(R)UD 
+        score = ReadFirstScore(tableScore, 14, idName, id);
+
+
+        // update CR(U)D
+
+        score.setScore(15);
+
+        int rowsAffected = tableScore.update(
+                DbTableScore.getContentValues(score),
+                DbTableScore._ID + "=?",
+                new String[]{Long.toString(id)}
+        );
+
+        //query/read C(R)UD
+        score = ReadFirstScore(tableScore, 15 , idName, id);
+
+
+        //delete CRU(D)
+        rowsAffected = tableScore.delete(
+                DbTableScore._ID + "=?",
+                new String[]{Long.toString(id)}
+        );
+        assertEquals("Failed to update Score",1, rowsAffected);
+
+
+        Cursor cursor = tableScore.query(DbTableScore.ALL_COLUMNS, null,null,null,null,null);
+        assertEquals("Score found after delete ???", 0, cursor.getCount());
+
+
+    }
+
+    private Score ReadFirstScore(DbTableScore tableScore, int expectedScore, long expectedidName, long expectedid) {
+        Cursor cursor = tableScore.query(DbTableScore.ALL_COLUMNS, null,null,null,null,null);
+        assertEquals("Failed to read Score", 1, cursor.getCount());
+
+        assertTrue("Failed to read first score", cursor.moveToNext());
+
+        Score score = DbTableScore.getCurrentScoreFromCursor(cursor);
+
+
+        assertEquals("Incorrect score", expectedScore, score.getScore());
+        assertEquals("Incorrect score player", expectedidName, score.getIdName());
+        assertEquals("Incorrect score id", expectedid, score.getId());
+
+        return score;
+
 
     }
 
@@ -113,7 +184,6 @@ public class QuizzDbTests {
     private Player ReadFirstPlayer(DbTablePlayer tablePlayer, long expected, String expectedName, long expectedId) {
         Cursor cursor = tablePlayer.query(DbTablePlayer.ALL_COLUMNS, null, null, null, null, null);
         assertEquals("Failed to read player", 1, cursor.getCount());
-
         assertTrue("Failed to read the first player", cursor.moveToNext());
 
         Player player = DbTablePlayer.getCurrentPlayerFromCursor(cursor);
@@ -123,4 +193,6 @@ public class QuizzDbTests {
 
         return player;
     }
+
+    private Context getContext() {return  InstrumentationRegistry.getTargetContext();}
 }
