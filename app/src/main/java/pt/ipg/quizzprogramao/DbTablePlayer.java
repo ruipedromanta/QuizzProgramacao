@@ -101,8 +101,8 @@ public class DbTablePlayer implements BaseColumns {
 
 
 
-    protected Cursor query(String[] colums, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-        return db.query(TABLE_NAME, colums, selection, selectionArgs, groupBy, having, orderBy);
+    protected Cursor query(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
+        return db.query(TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
 }
