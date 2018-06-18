@@ -11,7 +11,7 @@ import android.provider.BaseColumns;
 
 public class DbTableQuestions implements BaseColumns {
     public static final String FILED_QUESTION = "question";
-    public static final String FILED_ID_Player = "idPlayer";
+    public static final String FILED_ID_SCORE = "idScore";
     public static final String TABLE_NAME = "questions";
     private SQLiteDatabase db;
 
@@ -28,10 +28,10 @@ public class DbTableQuestions implements BaseColumns {
                 "CREATE TABLE " + TABLE_NAME + " " +   " (" +
                         _ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
                         FILED_QUESTION + "TEXT NOT NULL," +
-                        FILED_ID_Player + "INTEGER," +
-                        "FOREIGN KEY(" + FILED_ID_Player +")REFERENCES " +
-                        DbTablePlayer.TABLE_NAME +
-                        "(" + DbTablePlayer._ID+")" +
+                        FILED_ID_SCORE + "INTEGER," +
+                        "FOREIGN KEY(" + FILED_ID_SCORE +")REFERENCES " +
+                        DbTableScore.TABLE_NAME +
+                        "(" + DbTableScore._ID+")" +
 
                         ")"
 
@@ -46,7 +46,7 @@ public class DbTableQuestions implements BaseColumns {
 
         values.put(_ID, questions.getId());
         values.put(FILED_QUESTION, questions.getQuestion());
-        values.put(FILED_ID_Player, questions.getIdScore());
+        values.put(FILED_ID_SCORE, questions.getIdScore());
 
         return values;
 
@@ -57,7 +57,7 @@ public class DbTableQuestions implements BaseColumns {
     public static Questions getCurrentBookFromCursor(Cursor cursor) {
         final int posId = cursor.getColumnIndex(_ID);
         final int posQuestion = cursor.getColumnIndex(FILED_QUESTION);
-        final int posidScore = cursor.getColumnIndex(FILED_ID_Player);
+        final int posidScore = cursor.getColumnIndex(FILED_ID_SCORE);
 
 
         Questions questions = new Questions();
