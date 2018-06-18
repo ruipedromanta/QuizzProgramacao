@@ -18,12 +18,10 @@ public class QuizzContentProvider extends ContentProvider {
     public static final int PLAYER = 100;
     public static final String AUTHORITY = "pt.ipg.quizzprogramao";
     public static final int PLAYER_ID = 101;
-    public static final int SCORE = 200;
-    public static final int SCORE_ID = 201;
-    public static final int QUESTIONS = 300;
-    public static final int QUESTIONS_ID = 301;
-    public static final int ANSWERS = 400;
-    public static final int ANSWERS_ID = 401;
+    public static final int QUESTIONS = 200;
+    public static final int QUESTIONS_ID = 201;
+    public static final int ANSWERS = 300;
+    public static final int ANSWERS_ID = 301;
     DbQuizzOpenHelper quizzOpenHelper;
 
 
@@ -34,9 +32,6 @@ public class QuizzContentProvider extends ContentProvider {
 
             uriMatcher.addURI(AUTHORITY, "player", PLAYER);
             uriMatcher.addURI(AUTHORITY, "player/#", PLAYER_ID);
-
-            uriMatcher.addURI(AUTHORITY, "score", SCORE);
-            uriMatcher.addURI(AUTHORITY, "score/#", SCORE_ID);
 
             uriMatcher.addURI(AUTHORITY, "question", QUESTIONS);
             uriMatcher.addURI(AUTHORITY, "questions/#", QUESTIONS_ID);
@@ -69,8 +64,6 @@ public class QuizzContentProvider extends ContentProvider {
             case PLAYER:
                 return new DbTablePlayer(db).query(projection, selection, selectionArgs, null, null, sortOrder);
 
-            case SCORE:
-                return new DbTableScore(db).query(projection, selection, selectionArgs, null, null, sortOrder);
 
             case QUESTIONS:
                 return new DbTableQuestions(db).query(projection, selection, selectionArgs, null, null, sortOrder);
@@ -81,9 +74,6 @@ public class QuizzContentProvider extends ContentProvider {
 
             case PLAYER_ID:
                 return new DbTablePlayer(db).query(projection, DbTablePlayer._ID + "=?", new String[] { id },null, null, null);
-
-            case SCORE_ID:
-                return new DbTableScore(db).query(projection, DbTableScore._ID + "=?", new String[] { id },null, null, null);
 
             case QUESTIONS_ID:
                 return new DbTableQuestions(db).query(projection, DbTableQuestions._ID + "=?", new String[] {id}, null, null, null);
@@ -125,9 +115,6 @@ public class QuizzContentProvider extends ContentProvider {
             case PLAYER:
                 id = new DbTablePlayer(db).insert(values);
                 break;
-
-            case SCORE:
-                id = new DbTableScore(db).insert(values);
 
             case QUESTIONS:
                 id = new DbTableQuestions(db).insert(values);

@@ -23,8 +23,6 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
         dbTablePlayer.create();
 
-        DbTableScore dbTableScore = new DbTableScore(db);
-        dbTableScore.create();
 
         DbTableQuestions dbTableQuestions = new DbTableQuestions(db);
         dbTableQuestions.create();
