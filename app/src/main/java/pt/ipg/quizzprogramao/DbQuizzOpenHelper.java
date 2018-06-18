@@ -75,6 +75,28 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         score.setIdName(idPlayerJuliana);
         dbTableScore.insert(DbTableScore.getContentValues(score));
 
+        score = new Score();
+        score.setScore(1);
+        int idScore1 = (int) dbTableScore.insert(DbTableScore.getContentValues(score));
+
+
+        DbTableQuestions dbTableQuestions = new DbTableQuestions(db);
+
+        Questions questions = new Questions();
+        questions.setQuestion("Qual é a capaital de Portugal?");
+        questions.setIdScore(idScore1);
+        dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
+
+        questions = new Questions();
+        questions.setQuestion("Qual foi o primeiro rei de Portugal?");
+        questions.setIdScore(idScore1);
+        dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
+
+        questions = new Questions();
+        questions.setQuestion("25 de Abril, representa que feriado?");
+        questions.setIdScore(idScore1);
+        dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
+
 
 
 
