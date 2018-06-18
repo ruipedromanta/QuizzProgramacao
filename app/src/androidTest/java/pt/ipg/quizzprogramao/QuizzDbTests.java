@@ -156,7 +156,7 @@ public class QuizzDbTests {
     public void questionsCRUDtest() {
         DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(getContext());
 
-        SQLiteDatabase db = DbQuizzOpenHelper.getWritableDatabase();
+        SQLiteDatabase db = dbQuizzOpenHelper.getWritableDatabase();
 
         DbTableScore tableScore = new DbTableScore(db);
 
@@ -213,7 +213,122 @@ public class QuizzDbTests {
 
 
 
+
     }
+
+
+
+    @Test
+
+    public void answersCRUDtest () {
+        DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(getContext());
+
+        SQLiteDatabase db = dbQuizzOpenHelper.getWritableDatabase();
+
+        DbTableQuestions tableQuestions = new DbTableQuestions(db);
+
+        Questions questions = new Questions();
+        questions.setQuestion("Quanto é 1+1?");
+
+        long idquestion = insertQuestions(tableQuestions, questions);
+
+
+        DbTableAnswers tableAnswers = new DbTableAnswers(db);
+
+
+        //(C)RUD
+
+        Answers answers = new Answers();
+
+        answers.setAnswer("Três");
+        answers.setIdquestion((int) idquestion);
+
+        long id = tableAnswers.insert(
+                DbTableAnswers.getContentValues(answers)
+        );
+
+        assertNotEquals("Failed to insert answers", -1, id);
+
+        // C(R)UD
+        answers = ReadFirstAnswers(tableAnswers, "Três", idquestion, id);
+
+        // CR(U)D
+        answers.setAnswer("Dois");
+
+
+        int rowsAffected = tableAnswers.update(
+                DbTableAnswers.getContentValues(answers),
+                DbTableAnswers._ID + "=?",
+                new String[]{Long.toString(id)}
+        );
+        assertEquals("Failed to update answers", 1, rowsAffected);
+
+        //C(R)UD
+        answers = ReadFirstAnswers(tableAnswers, "Dois", idquestion, id);
+
+        //CRU(D)
+        rowsAffected = tableAnswers.delete(
+                DbTableAnswers._ID + "=?",
+                new String[]{Long.toString(id)}
+
+        );
+        assertEquals("Failed to delete answers", 1, rowsAffected);
+
+        Cursor cursor = tableAnswers.query(DbTableAnswers.A)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private long insertScore(DbTableScore tableScore, Score score) {
         long id = tableScore.insert(
