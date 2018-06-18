@@ -154,42 +154,101 @@ public class QuizzDbTests {
 
     @Test
     public void questionsCRUDtest() {
+        DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(getContext());
+
+        SQLiteDatabase db = DbQuizzOpenHelper.getWritableDatabase();
+
+        DbTableScore tableScore = new DbTableScore(db);
+
+        Score score = new Score();
+        score.setScore(1);
+
+        long idScore = insertScore(tableScore, score);
+
+        DbTableQuestions tableQuestions = new DbTableQuestions(db);
+
+        //(C)RUD
+        Questions questions = new Questions();
+
+        questions.setQuestion("Quanto é 1+1?");
+        questions.setIdScore((int) idScore);
+
+        long id = tableQuestions.insert(
+                DbTableQuestions. getContentValues(questions)
+        );
+        assertNotEquals("Failed to insert Question", -1, id);
+
+
+        //C(R)UD
+        questions = ReadFirstQuestions(tableQuestions, "Quanto é 1+1?", idScore, id);
+
+
+        //CR(U)D
+        questions.setQuestion("Quanto é 1+5?");
+
+        int rowsAffected = tableQuestions.update(
+                DbTableQuestions.getContentValues(questions),
+                DbTableQuestions._ID + "=?",
+                new String[]{Long.toString(id)}
+        );
+        assertEquals("Failed to update Questions", 1, rowsAffected);
+
+        //C(R)UD
+        questions = ReadFirstQuestions(tableQuestions, "Quanto é 1+1", idScore, id);
+
+        //CRU(D)
+        rowsAffected = tableQuestions.delete(
+                DbTableQuestions._ID + "=?",
+                new String[]{Long.toString(id)}
+        );
+        assertEquals("Failed to delete Questions", 1, rowsAffected);
+
+        Cursor cursor = tableQuestions.query(DbTableQuestions.ALL_COLUMNS, null, null,null,null,null);
+        assertEquals("Questions found after delete ???", 0, cursor.getCount());
 
 
 
 
 
-    };
-
-    DbTableQuestions tableQuestions = new DbTableQuestions(db);
-
-
-    //create/Insert
-
-    Questions questions = new Questions();
-
-    questions.set
 
 
 
+    }
+
+    private long insertScore(DbTableScore tableScore, Score score) {
+        long id = tableScore.insert(
+                DbTableScore.getContentValues(score)
+        );
+        assertNotEquals("Failed to insert Score", -1, id);
+
+        return id;
+
+    }
+
+    private long insertQuestions(DbTableQuestions tableQuestions, Questions questions) {
+        long id = tableQuestions.insert(
+                DbTableQuestions.getContentValues(questions)
+        );
+    assertNotEquals("Failed to insert Questions", -1,id);
+
+    return id;
+    }
+
+    private Questions ReadFirstQuestions(DbTableQuestions tableQuestions, String expectedQuestion, long expectedScore, long expectedid) {
+        Cursor cursor = tableQuestions.query(DbTableQuestions.ALL_COLUMNS, null, null, null, null, null);
+    assertEquals("Failed to read questions", 1, cursor.getCount());
+
+    assertTrue("Failed to read the first question", cursor.moveToNext());
+
+    Questions questions = DbTableQuestions.getCurrentQuestionsFromCursor(cursor);
+
+    assertEquals("Incorrect Questions question", expectedQuestion, questions.getQuestion());
+    assertEquals("Incorrect questions score", expectedScore, questions.getIdScore());
+    assertEquals("Incorrect questions id", expectedid, questions.getId());
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return questions;
+    }
 
 
 

@@ -15,8 +15,11 @@ import android.support.annotation.Nullable;
  */
 
 public class QuizzContentProvider extends ContentProvider {
+    private static final String AUTHORITY = "pt.ipg.quizzprogramao";
+
+
+
     public static final int PLAYER = 100;
-    public static final String AUTHORITY = "pt.ipg.quizzprogramao";
     public static final int PLAYER_ID = 101;
     public static final int SCORE = 200;
     public static final int SCORE_ID = 201;
