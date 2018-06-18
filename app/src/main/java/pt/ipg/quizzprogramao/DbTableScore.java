@@ -13,7 +13,7 @@ public class DbTableScore implements BaseColumns {
 
 
 
-    public static final String FILED_NAME = "name";
+
     public static final String FIELD_SCORE = "score";
     public static final String FIELD_ID_NAME = "idName";
     public static final String TABLE_NAME = FIELD_SCORE + "s";
@@ -52,7 +52,7 @@ public class DbTableScore implements BaseColumns {
 
         values.put(_ID, score.getId());
         values.put(FIELD_SCORE, score.getScore());
-        values.put(FILED_NAME, score.getIdName());
+        values.put(FIELD_ID_NAME, score.getIdName());
 
         return values;
     }

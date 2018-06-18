@@ -58,7 +58,6 @@ public class QuizzContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        return null;
         SQLiteDatabase db = quizzOpenHelper.getReadableDatabase();
 
         String id = uri.getLastPathSegment();
@@ -114,7 +113,6 @@ public class QuizzContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        return null;
         SQLiteDatabase db = quizzOpenHelper.getWritableDatabase();
 
         UriMatcher matcher = getQuizzUriMatcher();

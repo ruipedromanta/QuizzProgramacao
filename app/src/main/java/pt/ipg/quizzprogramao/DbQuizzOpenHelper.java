@@ -13,6 +13,7 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "quizz.db";
     public static final int DATABASE_VERSION = 1;
+    public static final boolean PRODUCTION = false;
 
     public DbQuizzOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,7 +32,63 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
 
         DbTableAnswers dbTableAnswers = new DbTableAnswers(db);
         dbTableAnswers.create();
+
+        if (!PRODUCTION) {
+            seed(db);
+        }
     }
+
+    private void seed(SQLiteDatabase db) {
+        DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
+
+
+        Player player = new Player();
+        player.setName("Rui");
+        player.setBest_score(8);
+        int idPlayerRui = (int) dbTablePlayer.insert(DbTablePlayer.getContentValues(player));
+
+        player = new Player();
+        player.setName("Pedro");
+        player.setBest_score(6);
+        int idPlayerPedro = (int) dbTablePlayer.insert(DbTablePlayer.getContentValues(player));
+
+        player = new Player();
+        player.setName("Juliana");
+        player.setBest_score(7);
+        int idPlayerJuliana = (int) dbTablePlayer.insert(DbTablePlayer.getContentValues(player));
+
+
+        DbTableScore dbTableScore = new DbTableScore(db);
+
+        Score score = new Score();
+        score.setScore(8);
+        score.setIdName(idPlayerRui);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
