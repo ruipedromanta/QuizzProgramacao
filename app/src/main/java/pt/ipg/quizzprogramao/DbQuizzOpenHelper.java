@@ -63,6 +63,17 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         Score score = new Score();
         score.setScore(8);
         score.setIdName(idPlayerRui);
+        dbTableScore.insert(DbTableScore.getContentValues(score));
+
+        score = new Score();
+        score.setScore(6);
+        score.setIdName(idPlayerPedro);
+        dbTableScore.insert(DbTableScore.getContentValues(score));
+
+        score = new Score();
+        score.setScore(7);
+        score.setIdName(idPlayerJuliana);
+        dbTableScore.insert(DbTableScore.getContentValues(score));
 
 
 
@@ -71,25 +82,7 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
