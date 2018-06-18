@@ -85,17 +85,53 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         Questions questions = new Questions();
         questions.setQuestion("Qual é a capaital de Portugal?");
         questions.setIdScore(idScore1);
-        dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
+        int idQuestion1 = (int) dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
 
         questions = new Questions();
         questions.setQuestion("Qual foi o primeiro rei de Portugal?");
         questions.setIdScore(idScore1);
-        dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
+        int idQuestion2 = (int) dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
 
         questions = new Questions();
         questions.setQuestion("25 de Abril, representa que feriado?");
         questions.setIdScore(idScore1);
-        dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
+        int idQuestion3 = (int)dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
+
+
+        DbTableAnswers dbTableAnswers = new DbTableAnswers(db);
+
+        Answers answers = new Answers();
+        answers.setAnswer("Guimarães");
+        answers.setIdquestion(idQuestion1);
+
+        answers = new Answers();
+        answers.setAnswer("Lisboa");
+        answers.setIdquestion(idQuestion1);
+
+
+        answers = new Answers();
+        answers.setAnswer("Porto");
+        answers.setIdquestion(idQuestion1);
+
+        answers = new Answers();
+        answers.setAnswer("Coimbra");
+        answers.setIdquestion(idQuestion1);
+
+        answers = new Answers();
+        answers.setAnswer("D.Sebastião");
+        answers.setIdquestion(idQuestion2);
+
+        answers = new Answers();
+        answers.setAnswer("D.João");
+        answers.setIdquestion(idQuestion2);
+
+        answers = new Answers();
+        answers.setAnswer("D.Afonso Henriques");
+        answers.setIdquestion(idQuestion2);
+
+        answers = new Answers();
+        answers.setAnswer("D.Sancho");
+        answers.setIdquestion(idQuestion2);
 
 
 
