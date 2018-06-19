@@ -17,6 +17,9 @@ public class DbTableAnswers implements BaseColumns {
     public static final String TABLE_NAME = "answers";
     private SQLiteDatabase db;
 
+    public static final String [] ALL_COLUMNS = new String[] {_ID, FILED_ANSWER, FILED_ID_QUESTION};
+
+
     public DbTableAnswers(SQLiteDatabase db) {
         this.db = db;
 
@@ -50,7 +53,7 @@ public class DbTableAnswers implements BaseColumns {
         return values;
     }
 
-    public static Answers getCurrentBookFromCursor(Cursor cursor) {
+    public static Answers getCurrentAnswersFromCursor(Cursor cursor) {
         final int posId = cursor.getColumnIndex(_ID);
         final int posanswer = cursor.getColumnIndex(FILED_ANSWER);
         final int posidquestion = cursor.getColumnIndex(FILED_ID_QUESTION);

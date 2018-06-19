@@ -207,13 +207,6 @@ public class QuizzDbTests {
         assertEquals("Questions found after delete ???", 0, cursor.getCount());
 
 
-
-
-
-
-
-
-
     }
 
 
@@ -274,59 +267,11 @@ public class QuizzDbTests {
         );
         assertEquals("Failed to delete answers", 1, rowsAffected);
 
-        Cursor cursor = tableAnswers.query(DbTableAnswers.A)
-
-
-
-
-
-
-
-
-
-
-
-
+        Cursor cursor = tableAnswers.query(DbTableAnswers.ALL_COLUMNS ,null, null, null, null, null);
+        assertEquals("Answers found after delete ???", 0, cursor.getCount());
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -366,7 +311,20 @@ public class QuizzDbTests {
     }
 
 
+    private Answers ReadFirstAnswers(DbTableAnswers tableAnswers, String expectedAnswer , long expectedidquestion, long expectedid) {
+        Cursor cursor = tableAnswers.query(DbTableAnswers.ALL_COLUMNS, null,null,null,null,null);
+        assertEquals("Failed to read answers", 1, cursor.getCount());
 
+        assertTrue("Failed to read first answer", cursor.moveToNext());
+
+        Answers answers = DbTableAnswers.getCurrentAnswersFromCursor(cursor);
+
+        assertEquals("Incorrect Answers answer", expectedAnswer, answers.getAnswer());
+        assertEquals("Incorrect answers ", expectedidquestion, answers.getIdquestion());
+        assertEquals("Incorrect answers id", expectedid, answers.getId());
+
+        return answers;
+    }
 
 
     private Score ReadFirstScore(DbTableScore tableScore, int expectedScore, long expectedidName, long expectedid) {
