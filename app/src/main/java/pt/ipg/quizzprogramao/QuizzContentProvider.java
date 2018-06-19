@@ -141,6 +141,9 @@ public class QuizzContentProvider extends ContentProvider {
                 case ANSWERS_ID:
                     return SINGLE_ITEM + "/" + AUTHORITY + "/" + DbTableAnswers.TABLE_NAME;
 
+
+                default:
+                    throw new UnsupportedOperationException("Unknown URI: " + uri);
             }
     }
 
@@ -185,8 +188,40 @@ public class QuizzContentProvider extends ContentProvider {
     }
 
     @Override
-    public int delete(@NonNull Uri uri, @Nullable String s, @Nullable String[] strings) {
-        return 0;
+    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+        SQLiteDatabase db = quizzOpenHelper.getWritableDatabase();
+
+        UriMatcher matcher = getQuizzUriMatcher();
+
+        String id = uri.getLastPathSegment();
+
+        int rows = 0;
+
+        switch (matcher.match(uri)) {
+            case PLAYER_ID:
+                rows = new DbTablePlayer(db).delete(DbTablePlayer._ID + "=?", new String[] {id});
+                break;
+
+            case SCORE_ID:
+                rows = new DbTableScore(db).delete(DbTableScore._ID + "=?", new String[] {id});
+                break;
+
+            case QUESTIONS_ID:
+                rows = new DbTableQuestions(db).delete(DbTableQuestions._ID + "=?", new String[] {id});
+                break;
+
+            case ANSWERS_ID:
+                rows = new DbTableAnswers(db).delete(DbTableAnswers._ID + "=?", new String[] {id});
+                break;
+
+            default:
+                throw new UnsupportedOperationException("Invalid URI: " + uri);
+
+        }
+
+        if (rows > 0) notifyChanges(uri);
+
+        return rows;
     }
 
     @Override
