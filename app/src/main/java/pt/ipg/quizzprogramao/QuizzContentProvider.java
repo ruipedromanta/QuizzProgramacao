@@ -27,6 +27,10 @@ public class QuizzContentProvider extends ContentProvider {
     public static final int QUESTIONS_ID = 301;
     public static final int ANSWERS = 400;
     public static final int ANSWERS_ID = 401;
+    public static final String MULTIPLE_ITEMS = "vnd.android.cursor.dir";
+    public static final String SINGLE_ITEM = "vnd.android.sursor.item";
+
+
     DbQuizzOpenHelper quizzOpenHelper;
 
 
@@ -110,7 +114,34 @@ public class QuizzContentProvider extends ContentProvider {
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {
-        return null;
+            UriMatcher matcher = getQuizzUriMatcher();
+
+            switch (matcher.match(uri)) {
+                case PLAYER:
+                    return MULTIPLE_ITEMS + "/" + AUTHORITY + "/" + DbTablePlayer.TABLE_NAME;
+
+                case SCORE:
+                    return MULTIPLE_ITEMS + "/" + AUTHORITY + "/" + DbTableScore.TABLE_NAME;
+
+                case QUESTIONS:
+                    return MULTIPLE_ITEMS + "/" + AUTHORITY + "/" + DbTableQuestions.TABLE_NAME;
+
+                case ANSWERS:
+                    return MULTIPLE_ITEMS + "/" + AUTHORITY + "/" + DbTableAnswers.TABLE_NAME;
+
+                case PLAYER_ID:
+                    return SINGLE_ITEM + "/" + AUTHORITY + "/" + DbTablePlayer.TABLE_NAME;
+
+                case SCORE_ID:
+                    return SINGLE_ITEM + "/" + AUTHORITY + "/" + DbTableScore.TABLE_NAME;
+
+                case QUESTIONS_ID:
+                    return SINGLE_ITEM + "/" + AUTHORITY + "/" + DbTableQuestions.TABLE_NAME;
+
+                case ANSWERS_ID:
+                    return SINGLE_ITEM + "/" + AUTHORITY + "/" + DbTableAnswers.TABLE_NAME;
+
+            }
     }
 
     @Nullable
