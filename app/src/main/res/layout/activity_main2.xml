@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/resposta4"
+        android:layout_width="375dp"
+        android:layout_height="47dp"
+        android:layout_alignLeft="@+id/resposta3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/resposta3"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="458dp"
+        tools:text="resposta4" />
+
+    <Button
+        android:id="@+id/resposta3"
+        android:layout_width="375dp"
+        android:layout_height="47dp"
+        android:layout_above="@+id/resposta4"
+        android:layout_alignLeft="@+id/pergunta"
+        android:layout_alignStart="@+id/pergunta"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="410dp"
+        tools:text="resposta3" />
+
+    <Button
+        android:id="@+id/resposta2"
+        android:layout_width="375dp"
+        android:layout_height="47dp"
+        android:layout_above="@+id/resposta3"
+        android:layout_alignLeft="@+id/resposta3"
+        android:layout_alignStart="@+id/resposta3"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="362dp"
+        tools:text="resposta2" />
+
+    <Button
+        android:id="@+id/resposta1"
+        android:layout_width="375dp"
+        android:layout_height="47dp"
+        android:layout_alignLeft="@+id/resposta2"
+        android:layout_alignStart="@+id/resposta2"
+        android:layout_below="@+id/pergunta"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="314dp"
+        tools:text="resposta1" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="score" />
+
+    <TextView
+        android:id="@+id/pergunta"
+        android:layout_width="377dp"
+        android:layout_height="270dp"
+        android:layout_below="@+id/score"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="42dp"
+        tools:text="pergunta" />
+
+    <Chronometer
+        android:id="@+id/chronometer2"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/score"
+        android:layout_alignBottom="@+id/score"
+        android:layout_alignEnd="@+id/pergunta"
+        android:layout_alignRight="@+id/pergunta"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
