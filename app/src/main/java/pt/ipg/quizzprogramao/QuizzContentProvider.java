@@ -225,7 +225,39 @@ public class QuizzContentProvider extends ContentProvider {
     }
 
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String s, @Nullable String[] strings) {
-        return 0;
+    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+        SQLiteDatabase db = quizzOpenHelper.getWritableDatabase();
+
+        UriMatcher matcher = getQuizzUriMatcher();
+
+        String id = uri.getLastPathSegment();
+
+        int rows = 0;
+
+        switch (matcher.match(uri)) {
+            case PLAYER_ID:
+                rows = new DbTablePlayer(db).update(values, DbTablePlayer._ID + "=?", new String[] {id});
+                break;
+
+            case SCORE_ID:
+                rows = new DbTableScore(db).update(values,DbTableScore._ID + "=?", new String[] {id});
+                break;
+
+            case QUESTIONS_ID:
+                rows = new DbTableQuestions(db).update(values,DbTableQuestions._ID + "=?", new String[] {id});
+                break;
+
+            case ANSWERS_ID:
+                rows = new DbTableAnswers(db).update(values,DbTableAnswers._ID + "=?", new String[] {id});
+                break;
+
+            default:
+                throw new UnsupportedOperationException("Invalid URI: " + uri);
+
+        }
+
+        if (rows > 0) notifyChanges(uri);
+
+        return rows;
     }
 }
