@@ -43,7 +43,7 @@ public class DbTablePlayer implements BaseColumns {
     public static ContentValues getContentValues(Player player) {
         ContentValues values = new ContentValues();
 
-        values.put(_ID, player.getId());
+
         values.put(FIELD_NAME, player.getName());
         values.put(BEST_SCORE, player.getBest_score());
 
@@ -102,7 +102,8 @@ public class DbTablePlayer implements BaseColumns {
 
 
     protected Cursor query(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-        return db.query(TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy);
+       Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy);
+       return cursor;
     }
 
 }
