@@ -50,8 +50,8 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
         playerCursorAdapter = new PlayerCursorAdapter(this);
         recyclerViewPlayer.setAdapter(playerCursorAdapter);
 
-        getLoaderManager().initLoader(PLAYER_CURSOR_LOADER_ID, null, (android.app.LoaderManager.LoaderCallbacks<Object>) this);
 
+        getSupportLoaderManager().initLoader(PLAYER_CURSOR_LOADER_ID, null, this);
 
 
 
@@ -96,5 +96,5 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
 
 
     }
-}
+
 
