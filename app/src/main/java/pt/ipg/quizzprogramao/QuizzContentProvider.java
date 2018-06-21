@@ -17,7 +17,8 @@ import android.support.annotation.Nullable;
 public class QuizzContentProvider extends ContentProvider {
     private static final String AUTHORITY = "pt.ipg.quizzprogramao";
 
-
+    public static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
+    public static final Uri PLAYER_URI = Uri.withAppendedPath(BASE_URI, DbTablePlayer.TABLE_NAME);
 
     public static final int PLAYER = 100;
     public static final int PLAYER_ID = 101;

@@ -86,9 +86,9 @@ public class PlayerCursorAdapter extends RecyclerView.Adapter<PlayerCursorAdapte
 
 
         public void onClick (View v) {
-            int poition = getAdapterPosition();
+            int position = getAdapterPosition();
 
-            if (poition == RecyclerView.NO_POSITION) {
+            if (position == RecyclerView.NO_POSITION) {
                 return;
             }
 
