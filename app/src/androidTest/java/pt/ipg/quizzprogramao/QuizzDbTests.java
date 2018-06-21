@@ -46,52 +46,6 @@ public class QuizzDbTests {
     }
 
     @Test
-    public void playerCRUDtest() {
-        DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(getContext());
-
-        SQLiteDatabase db = dbQuizzOpenHelper.getWritableDatabase();
-
-        DbTablePlayer tablePlayer = new DbTablePlayer(db);
-
-        Player player = new Player();
-        player.setName("Pedr");
-        player.setBest_score(7);
-
-        //Insert/create (C)RUD
-
-        long id = insertPlayer(tablePlayer, player);
-
-        //query/read C(R)UD
-
-        player = ReadFirstPlayer(tablePlayer, 7,"Pedr", id);
-
-        //update CR(U)D
-        player.setName("Pedro");
-        int rowsAffected = tablePlayer.update(
-                DbTablePlayer.getContentValues(player),
-                DbTablePlayer._ID + "=?",
-                new String[]{Long.toString(id)}
-
-        );
-
-        assertEquals("Failed to update player", 1, rowsAffected);
-
-        //delete CRU(D)
-        rowsAffected = tablePlayer.delete(
-                DbTablePlayer._ID + "=?",
-                new String[]{Long.toString(id)}
-        );
-
-        assertEquals("Failed to delete player", 1, rowsAffected);
-
-        Cursor cursor = tablePlayer.query(DbTablePlayer.ALL_COLUMNS, null,null,null,null,null);
-        assertEquals("Players found after delete ????",0, cursor.getCount());
-
-
-    }
-
-
-    @Test
 
     public void scoreCRUDtest () {
         DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(getContext());
@@ -273,6 +227,51 @@ public class QuizzDbTests {
 
     }
 
+    @Test
+    public void playerCRUDtest() {
+        DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(getContext());
+
+        SQLiteDatabase db = dbQuizzOpenHelper.getWritableDatabase();
+
+        DbTablePlayer tablePlayer = new DbTablePlayer(db);
+
+        Player player = new Player();
+        player.setName("Pedr");
+        player.setBest_score(7);
+
+        //Insert/create (C)RUD
+
+        long id = insertPlayer(tablePlayer, player);
+
+        //query/read C(R)UD
+
+        player = ReadFirstPlayer(tablePlayer, 7,"Pedr", id);
+
+        //update CR(U)D
+        player.setName("Pedro");
+        int rowsAffected = tablePlayer.update(
+                DbTablePlayer.getContentValues(player),
+                DbTablePlayer._ID + "=?",
+                new String[]{Long.toString(id)}
+
+        );
+
+        assertEquals("Failed to update player", 1, rowsAffected);
+
+        //delete CRU(D)
+        rowsAffected = tablePlayer.delete(
+                DbTablePlayer._ID + "=?",
+                new String[]{Long.toString(id)}
+        );
+
+        assertEquals("Failed to delete player", 1, rowsAffected);
+
+        Cursor cursor = tablePlayer.query(DbTablePlayer.ALL_COLUMNS, null,null,null,null,null);
+        assertEquals("Players found after delete ????",0, cursor.getCount());
+
+
+    }
+
 
 
     private long insertScore(DbTableScore tableScore, Score score) {
@@ -369,5 +368,6 @@ public class QuizzDbTests {
         return player;
     }
 
-    private Context getContext() {return  InstrumentationRegistry.getTargetContext();}
+    private Context getContext() {
+        return  InstrumentationRegistry.getTargetContext();}
 }

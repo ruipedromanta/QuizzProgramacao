@@ -18,6 +18,12 @@
         </activity>
         <activity android:name=".Quizz" />
         <activity android:name=".Activity_Score"></activity>
+
+        <provider
+            android:authorities="pt.ipg.quizzprogramao"
+            android:name=".QuizzContentProvider"
+            android:exported="false"
+            />
     </application>
 
 </manifest>
