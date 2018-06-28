@@ -77,6 +77,17 @@ public class EditPlayerActivity  extends AppCompatActivity implements LoaderMana
                 null,
                 null
         );
+
+        if (recordsAffected > 0) {
+            Toast.makeText(this, "Player saved successfully", Toast.LENGTH_LONG).show();
+            finish();
+        }
+
+        Toast.makeText(this, "Could not save Player", Toast.LENGTH_LONG).show();
+
+
+
+
     }
 
     @NonNull
