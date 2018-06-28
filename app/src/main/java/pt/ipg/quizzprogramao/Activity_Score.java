@@ -23,6 +23,7 @@ import android.widget.Button;
 public class Activity_Score extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     public static final int PLAYER_CURSOR_LOADER_ID = 0;
     public static final String PLAYER_ID = "PLAYER_ID";
+
     private Button button;
     private RecyclerView recyclerViewPlayer;
     private PlayerCursorAdapter playerCursorAdapter;
