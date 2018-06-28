@@ -22,6 +22,7 @@ import android.widget.Button;
 
 public class Activity_Score extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     public static final int PLAYER_CURSOR_LOADER_ID = 0;
+    public static final String PLAYER_ID = "PLAYER_ID";
     private Button button;
     private RecyclerView recyclerViewPlayer;
     private PlayerCursorAdapter playerCursorAdapter;
@@ -50,11 +51,26 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
         playerCursorAdapter = new PlayerCursorAdapter(this);
         recyclerViewPlayer.setAdapter(playerCursorAdapter);
 
+        playerCursorAdapter.setViewHolderClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editPlayer();
+            }
+        });
+
 
         getSupportLoaderManager().initLoader(PLAYER_CURSOR_LOADER_ID, null, this);
 
+    }
 
+    private void editPlayer() {
+        int id = playerCursorAdapter.getLastPlayerClicked();
 
+        Intent intent = new Intent(this, EditPlayerActivity.class);
+
+        intent.putExtra(PLAYER_ID, id);
+
+        startActivity(intent);
     }
 
 
