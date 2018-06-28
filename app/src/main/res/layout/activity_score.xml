@@ -7,6 +7,15 @@
     android:background="@drawable/fundo"
     android:layout_height="match_parent">
 
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <include layout="@layout/content_score" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
     <Button
         android:id="@+id/button7"
         android:layout_width="76dp"
@@ -29,13 +38,5 @@
         android:text="SAIR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewPlayer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

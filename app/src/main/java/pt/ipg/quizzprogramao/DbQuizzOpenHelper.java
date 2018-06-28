@@ -83,7 +83,7 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         DbTableQuestions dbTableQuestions = new DbTableQuestions(db);
 
         Questions questions = new Questions();
-        questions.setQuestion("Qual é a capaital de Portugal?");
+        questions.setQuestion("Qual é a capital de Portugal?");
         questions.setIdScore(idScore1);
         int idQuestion1 = (int) dbTableQuestions.insert(DbTableQuestions.getContentValues(questions));
 
