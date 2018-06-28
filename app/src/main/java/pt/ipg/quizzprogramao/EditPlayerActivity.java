@@ -54,6 +54,12 @@ public class EditPlayerActivity  extends AppCompatActivity implements LoaderMana
             return;
         }
 
+        editTextName = (EditText) findViewById(R.id.editTextName);
+
+
+        player = DbTablePlayer.getCurrentPlayerFromCursor(cursorPlayer);
+        editTextName.setText(player.getName());
+
 
     }
 
@@ -63,6 +69,14 @@ public class EditPlayerActivity  extends AppCompatActivity implements LoaderMana
 
     public void Save(View view) {
 
+        player.setName(editTextName.getText().toString());
+
+        int recordsAffected = getContentResolver().update(
+                Uri.withAppendedPath(QuizzContentProvider.PLAYER_URI, Integer.toString(player.getId())),
+                DbTablePlayer.getContentValues(player),
+                null,
+                null
+        );
     }
 
     @NonNull
