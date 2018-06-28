@@ -7,7 +7,7 @@ package pt.ipg.quizzprogramao;
 public class Perguntas {
 
     public String mPerguntas [] = {
-            //Fazer conexão base de dados
+
 
     };
 

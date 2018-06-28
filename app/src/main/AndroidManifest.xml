@@ -20,10 +20,19 @@
         <activity android:name=".Activity_Score"></activity>
 
         <provider
-            android:authorities="pt.ipg.quizzprogramao"
             android:name=".QuizzContentProvider"
+            android:authorities="pt.ipg.quizzprogramao"
             android:exported="false"
             />
+
+        <activity
+            android:name=".EditPlayerActivity"
+            android:label="@string/title_activity_edit_player"
+            android:parentActivityName=".Activity_Score">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.quizzprogramao.Activity_Score"/>
+        </activity>
     </application>
 
 </manifest>
