@@ -33,7 +33,8 @@
                 android:value="pt.ipg.quizzprogramao.Activity_Score" />
         </activity>
         <activity android:name=".Menu2" />
-        <activity android:name=".CategoriaHistoria"></activity>
+        <activity android:name=".CategoriaHistoria" />
+        <activity android:name=".CategoriaDesporto"></activity>
     </application>
 
 </manifest>
