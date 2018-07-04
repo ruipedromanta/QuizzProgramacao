@@ -19,6 +19,9 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * Faz a criação das diferentes tabelas na base de dados
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         DbTableScore dbTableScore = new DbTableScore(db);
@@ -44,6 +47,14 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * insere nas tabelas os registos
+     * Na tabela categories
+     * NA tabela Player
+     * Na tabela questions
+     * e
+     * na tabela answers
+     */
     private void seed(SQLiteDatabase db) {
 
         DbTableCategories dbTableCategories = new DbTableCategories(db);

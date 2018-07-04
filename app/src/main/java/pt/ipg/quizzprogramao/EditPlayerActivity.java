@@ -108,12 +108,18 @@ public class EditPlayerActivity  extends AppCompatActivity implements LoaderMana
         }
 
         Toast.makeText(this, "Could not save Player", Toast.LENGTH_LONG).show();
-
-
-
-
     }
 
+
+    /**
+     * Instantiate and return a new Loader for the given ID.
+     * <p>
+     * <p>This will always be called from the process's main thread.
+     *
+     * @param id   The ID whose loader is to be created.
+     * @param args Any arguments supplied by the caller.
+     * @return Return a new Loader instance that is ready to start loading.
+     */
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
