@@ -4,7 +4,7 @@ package pt.ipg.quizzprogramao;
  * Created by ruima on 29/05/2018.
  */
 
-public class Perguntas {
+public class PerguntasPlanetas {
 
     public String Perguntas [] = {
             "Quanto é 1 + 1?",
@@ -18,6 +18,8 @@ public class Perguntas {
             "Qual é o nono planeta do sistema solar?"
 
     };
+
+
 
 
     private String Respostas [][] = {
@@ -68,6 +70,8 @@ public class Perguntas {
         return Escolha;
 
     }
+
+
 
     public String getRespostaCorreta(int a) {
         String resposta;

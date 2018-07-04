@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Quizz" />
+        <activity android:name=".CategoriaPlanetas" />
         <activity android:name=".Activity_Score" />
 
         <provider
@@ -32,7 +32,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="pt.ipg.quizzprogramao.Activity_Score" />
         </activity>
-        <activity android:name=".Menu2"></activity>
+        <activity android:name=".Menu2" />
+        <activity android:name=".CategoriaHistoria"></activity>
     </application>
 
 </manifest>

@@ -12,12 +12,12 @@ import android.widget.TextView;
 import java.util.Random;
 
 
-public class Quizz extends AppCompatActivity {
+public class CategoriaPlanetas extends AppCompatActivity {
 
     Button resposta1, resposta2, resposta3, resposta4;
 
     TextView score, pergunta;
-    private Perguntas Perguntas = new Perguntas();
+    private PerguntasPlanetas Perguntas = new PerguntasPlanetas();
 
         private String mResposta;
         private int mScore;
@@ -109,7 +109,7 @@ public class Quizz extends AppCompatActivity {
 
 
     private void gameOver(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Quizz.this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CategoriaPlanetas.this);
         alertDialogBuilder
                 .setMessage("Perdeste! O teu score é " +mScore + " pontos.")
                 .setCancelable(false)
@@ -117,7 +117,7 @@ public class Quizz extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                startActivity(new Intent(getApplicationContext(),Quizz.class));
+                                startActivity(new Intent(getApplicationContext(),CategoriaPlanetas.class));
                             }
                         })
                 .setNegativeButton("SAIR",
