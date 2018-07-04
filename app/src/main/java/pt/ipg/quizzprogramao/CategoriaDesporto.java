@@ -48,6 +48,14 @@ public class CategoriaDesporto extends AppCompatActivity {
 
             updatePerguntaDesporto(r.nextInt(PerguntasDesportoLength));
 
+
+        /**
+         * Aqui faz-se a validação da resposta certa ou então faz o game over onde depois vai aparecer o alerta
+         * Se a pergunta estiver certa adiciona 1 ao score
+         * e faz o update de uma nova pergunta
+         * Se errar a pergunta
+         * acaba o jogo
+         */
             resposta11.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -60,7 +68,13 @@ public class CategoriaDesporto extends AppCompatActivity {
                     }
                 }
             });
-
+        /**
+         * Aqui faz-se a validação da resposta certa ou então faz o game over onde depois vai aparecer o alerta
+         * Se a pergunta estiver certa adiciona 1 ao score
+         * e faz o update de uma nova pergunta
+         * Se errar a pergunta
+         * acaba o jogo
+         */
             resposta10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -74,7 +88,13 @@ public class CategoriaDesporto extends AppCompatActivity {
                 }
             });
 
-
+        /**
+         * Aqui faz-se a validação da resposta certa ou então faz o game over onde depois vai aparecer o alerta
+         * Se a pergunta estiver certa adiciona 1 ao score
+         * e faz o update de uma nova pergunta
+         * Se errar a pergunta
+         * acaba o jogo
+         */
             resposta9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -88,6 +108,13 @@ public class CategoriaDesporto extends AppCompatActivity {
                 }
             });
 
+        /**
+         * Aqui faz-se a validação da resposta certa ou então faz o game over onde depois vai aparecer o alerta
+         * Se a pergunta estiver certa adiciona 1 ao score
+         * e faz o update de uma nova pergunta
+         * Se errar a pergunta
+         * acaba o jogo
+         */
             resposta8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -104,7 +131,9 @@ public class CategoriaDesporto extends AppCompatActivity {
 
         }
 
-
+    /**
+     * Aqui faz-se o update da pergunta a ser mostrada
+     */
     private void updatePerguntaDesporto(int num) {
         pergunta3.setText(PerguntasDesporto.getPerguntaDesporto(num));
         resposta11.setText(PerguntasDesporto.getEscolha0(num));

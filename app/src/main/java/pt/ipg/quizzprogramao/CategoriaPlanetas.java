@@ -48,6 +48,14 @@ public class CategoriaPlanetas extends AppCompatActivity {
 
             updatePergunta(r.nextInt(PerguntasLength));
 
+
+            /**
+             * Aqui faz-se a validação da resposta certa ou então faz o game over onde depois vai aparecer o alerta
+             * Se a pergunta estiver certa adiciona 1 ao score
+             * e faz o update de uma nova pergunta
+             * Se errar a pergunta
+             * acaba o jogo
+             */
             resposta1.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View view) {
@@ -63,6 +71,13 @@ public class CategoriaPlanetas extends AppCompatActivity {
 
 
 
+            /**
+             * Aqui faz-se a validação da resposta certa ou então faz o game over onde depois vai aparecer o alerta
+             * Se a pergunta estiver certa adiciona 1 ao score
+             * e faz o update de uma nova pergunta
+             * Se errar a pergunta
+             * acaba o jogo
+             */
             resposta2.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View view) {
@@ -75,6 +90,14 @@ public class CategoriaPlanetas extends AppCompatActivity {
                     }
                 }
             });
+
+            /**
+             * Aqui faz-se a validação da resposta certa ou então faz o game over onde depois vai aparecer o alerta
+             * Se a pergunta estiver certa adiciona 1 ao score
+             * e faz o update de uma nova pergunta
+             * Se errar a pergunta
+             * acaba o jogo
+             */
             resposta3.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     if(resposta3.getText() == mResposta) {
@@ -86,6 +109,14 @@ public class CategoriaPlanetas extends AppCompatActivity {
                     }
                 }
             });
+
+            /**
+             * Aqui faz-se a validação da resposta certa ou então faz o game over onde depois vai aparecer o alerta
+             * Se a pergunta estiver certa adiciona 1 ao score
+             * e faz o update de uma nova pergunta
+             * Se errar a pergunta
+             * acaba o jogo
+             */
             resposta4.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     if(resposta4.getText() == mResposta) {
@@ -100,6 +131,11 @@ public class CategoriaPlanetas extends AppCompatActivity {
 
         }
 
+
+
+    /**
+     * Aqui faz-se o update da pergunta a ser mostrada
+     */
     private void updatePergunta(int num) {
         pergunta.setText(Perguntas.getPergunta(num));
         resposta1.setText(Perguntas.getEscolha1(num));
