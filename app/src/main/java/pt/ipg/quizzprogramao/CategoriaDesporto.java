@@ -13,6 +13,20 @@ import java.util.Random;
 
 public class CategoriaDesporto extends AppCompatActivity {
 
+
+
+
+        Button resposta11, resposta10, resposta9, resposta8;
+        TextView pergunta3, score3;
+
+
+        private PerguntasDesporto PerguntasDesporto = new PerguntasDesporto();
+
+        private  String RespostaDesporto;
+        private  int DScore;
+        private int PerguntasDesportoLength = PerguntasDesporto.PerguntasDesporto.length;
+        Random r;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,57 +34,40 @@ public class CategoriaDesporto extends AppCompatActivity {
 
 
 
-        Button resposta7, resposta6, resposta5, resposta;
-        TextView pergunta2 , score2;
-
-
-        private PerguntasDesporto PerguntasDesporto = new PerguntasDesporto();
-
-        private final String RespostaDesporto;
-        private final int DScore;
-        private final int PerguntasDesportoLength = PerguntasDesporto.PerguntaDesporto.length;
-        Random r;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_categoria_historia);
-
-
             r = new Random();
 
-            resposta7 = findViewById(R.id.resposta7);
-            resposta6 = findViewById(R.id.resposta6);
-            resposta5 = findViewById(R.id.resposta5);
-            resposta = findViewById(R.id.resposta);
+            resposta11 = findViewById(R.id.resposta11);
+            resposta10 = findViewById(R.id.resposta10);
+            resposta9 = findViewById(R.id.resposta9);
+            resposta8 = findViewById(R.id.resposta8);
 
-            score2 = findViewById(R.id.score2);
-            pergunta2 = findViewById(R.id.pergunta2);
+            score3 = findViewById(R.id.score3);
+            pergunta3 = findViewById(R.id.pergunta3);
 
-            score2.setText("Score:  " + DScore);
+            score3.setText("Score:  " + DScore);
 
-            updatePerguntaHistoria(r.nextInt(PerguntasDesportoLength));
+            updatePerguntaDesporto(r.nextInt(PerguntasDesportoLength));
 
-            resposta7.setOnClickListener(new View.OnClickListener() {
+            resposta11.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (resposta7.getText() == RespostaDesporto) {
+                    if (resposta11.getText() == RespostaDesporto) {
                         DScore++;
-                        score2.setText("Score:  " + DScore);
-                        updatePerguntaHistoria(r.nextInt(PerguntasDesportoLength));
+                        score3.setText("Score:  " + DScore);
+                        updatePerguntaDesporto(r.nextInt(PerguntasDesportoLength));
                     } else {
                         gameOver();
                     }
                 }
             });
 
-            resposta6.setOnClickListener(new View.OnClickListener() {
+            resposta10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (resposta6.getText() == RespostaHistoria) {
-                        HScore++;
-                        score2.setText("Score:  " + HScore);
-                        updatePerguntaHistoria(r.nextInt(PerguntasHistoriaLength));
+                    if (resposta10.getText() == RespostaDesporto) {
+                        DScore++;
+                        score3.setText("Score:  " + DScore);
+                        updatePerguntaDesporto(r.nextInt(PerguntasDesportoLength));
                     } else {
                         gameOver();
                     }
@@ -78,62 +75,59 @@ public class CategoriaDesporto extends AppCompatActivity {
             });
 
 
-            resposta5.setOnClickListener(new View.OnClickListener() {
+            resposta9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (resposta5.getText() == RespostaHistoria) {
-                        HScore++;
-                        score2.setText("Score:  " + HScore);
-                        updatePerguntaHistoria(r.nextInt(PerguntasHistoriaLength));
+                    if (resposta9.getText() == RespostaDesporto) {
+                        DScore++;
+                        score3.setText("Score:  " + DScore);
+                        updatePerguntaDesporto(r.nextInt(PerguntasDesportoLength));
                     } else {
                         gameOver();
                     }
                 }
             });
 
-            resposta.setOnClickListener(new View.OnClickListener() {
+            resposta8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (resposta.getText() == RespostaHistoria) {
-                        HScore++;
-                        score2.setText("Score:  " + HScore);
-                        updatePerguntaHistoria(r.nextInt(PerguntasHistoriaLength));
+                    if (resposta8.getText() == RespostaDesporto) {
+                        DScore++;
+                        score3.setText("Score:  " + DScore);
+                        updatePerguntaDesporto(r.nextInt(PerguntasDesportoLength));
                     } else {
                         gameOver();
                     }
                 }
             });
-
-
-
-
 
 
         }
 
 
+    private void updatePerguntaDesporto(int num) {
+        pergunta3.setText(PerguntasDesporto.getPerguntaDesporto(num));
+        resposta11.setText(PerguntasDesporto.getEscolha0(num));
+        resposta10.setText(PerguntasDesporto.getEscolha1(num));
+        resposta9.setText(PerguntasDesporto.getEscolha2(num));
+        resposta8.setText(PerguntasDesporto.getEscolha3(num));
 
-    private void updatePerguntaHistoria(int num) {
-        pergunta2.setText(PerguntasHistoria.getPerguntaHistoria(num));
-        resposta7.setText(PerguntasHistoria.getEscolha0(num));
-        resposta6.setText(PerguntasHistoria.getEscolha1(num));
-        resposta5.setText(PerguntasHistoria.getEscolha2(num));
-        resposta.setText(PerguntasHistoria.getEscolha3(num));
-
-        RespostaHistoria = PerguntasHistoria.getRespostaHistoriaCorreta(num);
+        RespostaDesporto = PerguntasDesporto.getRespostaDesportoCorreta(num);
     }
 
 
+
+
     private void gameOver(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CategoriaHistoria.this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CategoriaDesporto.this);
         alertDialogBuilder
-                .setMessage("Perdeste! O teu score é " +HScore + " pontos.")
+                .setMessage("Perdeste! O teu score é " +DScore + " pontos.")
                 .setCancelable(false)
                 .setPositiveButton("NOVO JOGO",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                startActivity(new Intent(getApplicationContext(),CategoriaHistoria.class));
+                                startActivity(new Intent(getApplicationContext(),CategoriaDesporto.class));
                             }
                         })
                 .setNegativeButton("SAIR",
@@ -149,5 +143,5 @@ public class CategoriaDesporto extends AppCompatActivity {
     }
 }
 
-    }
-}
+
+
