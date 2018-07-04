@@ -45,7 +45,8 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
     }
 
     private void seed(SQLiteDatabase db) {
-        DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
+
+        DbTableCategories dbTableCategories = new DbTableCategories(db);
 
 
         Category category = new Category();
@@ -62,6 +63,7 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         int idCategoryHistória = (int) dbTableCategories.insert(DbTableCategories.getContentValues(category));
 
 
+        DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
         Player player = new Player();
         player.setName("Rui");
         player.setBest_score(8);
