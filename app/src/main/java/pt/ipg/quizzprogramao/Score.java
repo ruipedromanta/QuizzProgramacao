@@ -7,7 +7,7 @@ package pt.ipg.quizzprogramao;
 public class Score {
     private int id;
     private int score;
-    private int idName;
+    private int idPlayer;
 
     public int getId() {
         return id;
@@ -25,11 +25,11 @@ public class Score {
         this.score = score;
     }
 
-    public int getIdName() {
-        return idName;
+    public int getIdPlayer() {
+        return idPlayer;
     }
 
-    public void setIdName(int idName) {
-        this.idName = idName;
+    public void setIdPlayer(int idPlayer) {
+        this.idPlayer = idPlayer;
     }
 }

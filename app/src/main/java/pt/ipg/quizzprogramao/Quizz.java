@@ -14,22 +14,14 @@ import java.util.Random;
 
 public class Quizz extends AppCompatActivity {
 
+    Button resposta1, resposta2, resposta3, resposta4;
 
-
-
-        Button resposta1, resposta2, resposta3, resposta4;
-
-        TextView score, pergunta;
-
-
-        private Perguntas mPerguntas = new Perguntas();
+    TextView score, pergunta;
+    private Perguntas Perguntas = new Perguntas();
 
         private String mResposta;
         private int mScore;
-        private int mPerguntasLength = mPerguntas.mPerguntas.length;
-
-
-
+        private int PerguntasLength = Perguntas.Perguntas.length;
         Random r;
 
 
@@ -40,63 +32,61 @@ public class Quizz extends AppCompatActivity {
 
              r = new Random();
 
-            resposta1 = (Button) findViewById(R.id.resposta1);
-            resposta2 = (Button) findViewById(R.id.resposta2);
-            resposta3 = (Button) findViewById(R.id.resposta3);
-            resposta4 = (Button) findViewById(R.id.resposta4);
+            resposta1 =  findViewById(R.id.resposta1);
+            resposta2 =  findViewById(R.id.resposta2);
+            resposta3 =  findViewById(R.id.resposta3);
+            resposta4 =  findViewById(R.id.resposta4);
 
-            score = (TextView) findViewById(R.id.score);
-            pergunta = (TextView) findViewById(R.id.pergunta);
+            score =  findViewById(R.id.score);
+            pergunta =  findViewById(R.id.pergunta);
 
 
 
-            score.setText("Score: " + mScore);
+            score.setText("Score:  " + mScore);
 
-            updatePergunta(r.nextInt(mPerguntasLength));
+            updatePergunta(r.nextInt(PerguntasLength));
 
             resposta1.setOnClickListener(new View.OnClickListener() {
-                @Override
+
                 public void onClick(View view) {
                     if(resposta1.getText() == mResposta) {
                         mScore++;
-                        score.setText("Score: " + mScore);
-                        updatePergunta(r.nextInt(mPerguntasLength));
+                        score.setText("Score:  " + mScore);
+                        updatePergunta(r.nextInt(PerguntasLength));
                     } else {
                         gameOver();
                     }
                 }
             });
             resposta2.setOnClickListener(new View.OnClickListener() {
-                @Override
+
                 public void onClick(View view) {
                     if(resposta2.getText() == mResposta) {
                         mScore++;
-                        score.setText("Score: " + mScore);
-                        updatePergunta(r.nextInt(mPerguntasLength));
+                        score.setText("Score:  " + mScore);
+                        updatePergunta(r.nextInt(PerguntasLength));
                     } else {
                         gameOver();
                     }
                 }
             });
             resposta3.setOnClickListener(new View.OnClickListener() {
-                @Override
                 public void onClick(View view) {
                     if(resposta3.getText() == mResposta) {
                         mScore++;
-                        score.setText("Score: " + mScore);
-                        updatePergunta(r.nextInt(mPerguntasLength));
+                        score.setText("Score:  " + mScore);
+                        updatePergunta(r.nextInt(PerguntasLength));
                     } else {
                         gameOver();
                     }
                 }
             });
             resposta4.setOnClickListener(new View.OnClickListener() {
-                @Override
                 public void onClick(View view) {
                     if(resposta4.getText() == mResposta) {
                         mScore++;
                         score.setText("Score: " + mScore);
-                        updatePergunta(r.nextInt(mPerguntasLength));
+                        updatePergunta(r.nextInt(PerguntasLength));
                     } else {
                         gameOver();
                     }
@@ -106,13 +96,13 @@ public class Quizz extends AppCompatActivity {
         }
 
     private void updatePergunta(int num) {
-        pergunta.setText(mPerguntas.getPergunta(num));
-        resposta1.setText(mPerguntas.getEscolha1(num));
-        resposta2.setText(mPerguntas.getEscolha2(num));
-        resposta3.setText(mPerguntas.getEscolha3(num));
-        resposta4.setText(mPerguntas.getEscolha4(num));
+        pergunta.setText(Perguntas.getPergunta(num));
+        resposta1.setText(Perguntas.getEscolha1(num));
+        resposta2.setText(Perguntas.getEscolha2(num));
+        resposta3.setText(Perguntas.getEscolha3(num));
+        resposta4.setText(Perguntas.getEscolha4(num));
 
-        mResposta = mPerguntas.getRespostaCorreta(num);
+        mResposta = Perguntas.getRespostaCorreta(num);
 
 
     }

@@ -15,10 +15,10 @@ public class DbTableScore implements BaseColumns {
 
 
     public static final String FIELD_SCORE = "score";
-    public static final String FIELD_ID_NAME = "idName";
     public static final String TABLE_NAME = FIELD_SCORE + "s";
+    public static final String FIELD_ID_PLAYER = "idPlayer";
 
-    public static final String [] ALL_COLUMNS = new String[] {_ID, FIELD_SCORE,FIELD_ID_NAME};
+    public static final String [] ALL_COLUMNS = new String[] { _ID, FIELD_SCORE, FIELD_ID_PLAYER };
 
     private SQLiteDatabase db;
 
@@ -31,19 +31,22 @@ public class DbTableScore implements BaseColumns {
 
     public void create() {
         db.execSQL(
-                "CREATE TABLE " + TABLE_NAME +   "(" +
-                        _ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        FIELD_SCORE + "INTEGER," +
-                        FIELD_ID_NAME + "INTEGER," +
-                        "FOREIGN KEY(" + FIELD_ID_NAME + ") REFERENCES " +
-                        DbTablePlayer.TABLE_NAME +
-                        "(" + DbTablePlayer._ID +")" +
+                "CREATE TABLE " + TABLE_NAME +  "(" +
+                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        FIELD_SCORE + " INTEGER," +
+                       FIELD_ID_PLAYER + " INTEGER," +
+                        "FOREIGN KEY (" + FIELD_ID_PLAYER + ") REFERENCES " +
+                            DbTablePlayer.TABLE_NAME +
+                                "(" + DbTablePlayer._ID + ")" +
                         ")"
-
-
-
-
         );
+
+
+
+
+
+
+
     }
 
 
@@ -52,7 +55,7 @@ public class DbTableScore implements BaseColumns {
 
         values.put(_ID, score.getId());
         values.put(FIELD_SCORE, score.getScore());
-        values.put(FIELD_ID_NAME, score.getIdName());
+        values.put(FIELD_ID_PLAYER, score.getIdPlayer());
 
         return values;
     }
@@ -60,13 +63,13 @@ public class DbTableScore implements BaseColumns {
     public static Score getCurrentScoreFromCursor (Cursor cursor) {
         final int posId = cursor.getColumnIndex(_ID);
         final int posScore = cursor.getColumnIndex(FIELD_SCORE);
-        final int posidName = cursor.getColumnIndex(FIELD_ID_NAME);
+        final int posidPlayer = cursor.getColumnIndex(FIELD_ID_PLAYER);
 
         Score score = new Score();
 
         score.setId(cursor.getInt(posId));
         score.setScore(cursor.getInt(posScore));
-        score.setIdName(cursor.getInt(posidName));
+        score.setIdPlayer(cursor.getInt(posidPlayer));
 
         return score;
     }

@@ -16,7 +16,7 @@ public class DbTablePlayer implements BaseColumns {
     public static final String FIELD_NAME = "name";
     public static final String BEST_SCORE = "best_score";
 
-    public static final String [] ALL_COLUMNS = new String[] {_ID, FIELD_NAME, BEST_SCORE};
+    public static final String [] ALL_COLUMNS = new String[] { _ID, FIELD_NAME, BEST_SCORE };
 
     private SQLiteDatabase db;
 
@@ -30,9 +30,9 @@ public class DbTablePlayer implements BaseColumns {
 
 
     public void create () {
-        db.execSQL(
+            db.execSQL(
                 "CREATE TABLE " + TABLE_NAME + "(" +
-                        _ID + "INTEGGER PRIMARY KEY AUTOINCREMENT, " +
+                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         FIELD_NAME + "TEXT NOT NULL, " +
                         BEST_SCORE + "INTEGER" +
                         ")"
@@ -101,9 +101,8 @@ public class DbTablePlayer implements BaseColumns {
 
 
 
-    protected Cursor query(String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-       Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy);
-       return cursor;
+    public Cursor query (String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
+        return db.query(TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
 }

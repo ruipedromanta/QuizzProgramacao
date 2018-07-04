@@ -26,20 +26,21 @@ public class DbTableAnswers implements BaseColumns {
     }
 
 
-
+    /**
+     *
+     */
     public void create() {
         db.execSQL(
-                "CREATE TABLE " + TABLE_NAME + " " +   " (" +
-                        _ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        FILED_ANSWER + "TEXT NOT NULL," +
-                        FILED_ID_QUESTION + "TEXT NOT NULL," +
-                        "FOREIGN KEY( " + FILED_ID_QUESTION +") REFERENCES " +
-                            DbTableQuestions.TABLE_NAME +
-                                "(" + DbTableQuestions._ID+")" +
+                "CREATE TABLE " + TABLE_NAME +  " (" +
+                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        FILED_ANSWER + " TEXT NOT NULL," +
+                        FILED_ID_QUESTION + " TEXT NOT NULL" +
                         ")"
 
 
+
         );
+
     }
 
 

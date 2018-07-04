@@ -31,6 +31,9 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
     Button button7;
 
     @Override
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
@@ -113,5 +116,7 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
 
 
     }
+
+
 
 

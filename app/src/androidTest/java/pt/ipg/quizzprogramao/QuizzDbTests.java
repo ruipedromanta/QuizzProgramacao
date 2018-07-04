@@ -35,7 +35,7 @@ public class QuizzDbTests {
 
     @Test
     public  void openQuizzDbTests() {
-        
+        // Context of the app under test.
          Context appContext = getContext();
 
         DbQuizzOpenHelper dbQuizzOpenHelper = new DbQuizzOpenHelper(appContext);
@@ -65,7 +65,7 @@ public class QuizzDbTests {
         Score score = new Score();
 
         score.setScore(14);
-        score.setIdName((int) idName);
+        score.setIdPlayer((int) idName);
 
         long id = tableScore.insert(
                 DbTableScore.getContentValues(score)
@@ -241,7 +241,9 @@ public class QuizzDbTests {
 
         //Insert/create (C)RUD
 
-        long id = insertPlayer(tablePlayer, player);
+        long id = tablePlayer.insert(
+                DbTablePlayer.getContentValues(player)
+        );
 
         //query/read C(R)UD
 
@@ -249,6 +251,7 @@ public class QuizzDbTests {
 
         //update CR(U)D
         player.setName("Pedro");
+        player.setBest_score(9);
         int rowsAffected = tablePlayer.update(
                 DbTablePlayer.getContentValues(player),
                 DbTablePlayer._ID + "=?",
@@ -336,7 +339,7 @@ public class QuizzDbTests {
 
 
         assertEquals("Incorrect score", expectedScore, score.getScore());
-        assertEquals("Incorrect score player", expectedidName, score.getIdName());
+        assertEquals("Incorrect score player", expectedidName, score.getIdPlayer());
         assertEquals("Incorrect score id", expectedid, score.getId());
 
         return score;
@@ -355,13 +358,14 @@ public class QuizzDbTests {
     }
 
     @NonNull
-    private Player ReadFirstPlayer(DbTablePlayer tablePlayer, long expected, String expectedName, long expectedId) {
+    private Player ReadFirstPlayer(DbTablePlayer tablePlayer, long expectedScore, String expectedName, long expectedId) {
         Cursor cursor = tablePlayer.query(DbTablePlayer.ALL_COLUMNS, null, null, null, null, null);
         assertEquals("Failed to read player", 1, cursor.getCount());
+
         assertTrue("Failed to read the first player", cursor.moveToNext());
 
         Player player = DbTablePlayer.getCurrentPlayerFromCursor(cursor);
-        assertEquals("Incorret best score", expected, player.getBest_score());
+        assertEquals("Incorrect best score", expectedScore, player.getBest_score());
         assertEquals("Incorrect player name", expectedName, player.getName());
         assertEquals("Incorrect player id", expectedId, player.getId());
 

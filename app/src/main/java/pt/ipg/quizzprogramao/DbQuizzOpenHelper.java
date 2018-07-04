@@ -21,17 +21,20 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
-        dbTablePlayer.create();
-
         DbTableScore dbTableScore = new DbTableScore(db);
         dbTableScore.create();
+
+        DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
+        dbTablePlayer.create();
 
         DbTableQuestions dbTableQuestions = new DbTableQuestions(db);
         dbTableQuestions.create();
 
         DbTableAnswers dbTableAnswers = new DbTableAnswers(db);
         dbTableAnswers.create();
+
+
+
 
         if (!PRODUCTION) {
             seed(db);
@@ -62,17 +65,17 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
 
         Score score = new Score();
         score.setScore(8);
-        score.setIdName(idPlayerRui);
+        score.setIdPlayer(idPlayerRui);
         dbTableScore.insert(DbTableScore.getContentValues(score));
 
         score = new Score();
         score.setScore(6);
-        score.setIdName(idPlayerPedro);
+        score.setIdPlayer(idPlayerPedro);
         dbTableScore.insert(DbTableScore.getContentValues(score));
 
         score = new Score();
         score.setScore(7);
-        score.setIdName(idPlayerJuliana);
+        score.setIdPlayer(idPlayerJuliana);
         dbTableScore.insert(DbTableScore.getContentValues(score));
 
         score = new Score();
