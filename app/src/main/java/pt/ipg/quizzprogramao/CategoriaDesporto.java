@@ -118,6 +118,11 @@ public class CategoriaDesporto extends AppCompatActivity {
 
 
 
+    /**
+     * Aqui faz-se o o alerta que aparece quando se falha uma pergunta
+     * Õu
+     * se Sai do jogo ou então entra-se num jogo novo da mesma categoria
+     */
     private void gameOver(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CategoriaDesporto.this);
         alertDialogBuilder

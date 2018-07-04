@@ -24,7 +24,6 @@ public class CategoriaPlanetas extends AppCompatActivity {
         private int PerguntasLength = Perguntas.Perguntas.length;
         Random r;
 
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -42,6 +41,9 @@ public class CategoriaPlanetas extends AppCompatActivity {
 
 
 
+            /**
+             * Aqui poe o Score no ecrã
+             */
             score.setText("Score:  " + mScore);
 
             updatePergunta(r.nextInt(PerguntasLength));
@@ -58,6 +60,9 @@ public class CategoriaPlanetas extends AppCompatActivity {
                     }
                 }
             });
+
+
+
             resposta2.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View view) {
@@ -108,6 +113,11 @@ public class CategoriaPlanetas extends AppCompatActivity {
     }
 
 
+    /**
+     * Aqui faz-se o o alerta que aparece quando se falha uma pergunta
+     * Õu
+     * se Sai do jogo ou então entra-se num jogo novo da mesma categoria
+     */
     private void gameOver(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CategoriaPlanetas.this);
         alertDialogBuilder

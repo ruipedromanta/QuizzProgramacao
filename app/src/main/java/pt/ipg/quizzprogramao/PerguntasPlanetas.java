@@ -6,6 +6,11 @@ package pt.ipg.quizzprogramao;
 
 public class PerguntasPlanetas {
 
+
+
+    /**
+     * Aqui poem-se as perguntas, na categoria Planetas.
+     */
     public String Perguntas [] = {
             "Quaa é o primeiro planeta do sistema solar?",
             "Qual é o segundo planeta do sistema solar?",
@@ -23,6 +28,9 @@ public class PerguntasPlanetas {
 
 
 
+    /**
+     * Aqui poem-se as respotas possiveis para responder á pergunta.
+     */
     private String Respostas [][] = {
             {"Marte", "Mercurio", "Saturno", "Uránio"},
             {"Vênus", "Terra", "Marte", "Neptuno"},
@@ -37,8 +45,18 @@ public class PerguntasPlanetas {
     };
 
 
+
+    /**
+     * Aqui poem-se as respostas corretas por oredem como nas perguntas.
+     */
     private String RespostasCorretas [] = {"Mercurio", "Vênus", "Terra", "Marte", "Júpiter", "Saturno", "Uranio", "Neptuno", "Plutão", "Mercurio"};
 
+
+
+
+    /**
+     * Aqui faz-se o push da pergunta
+     */
     public String getPergunta(int a){
         String pergunta;
         pergunta = Perguntas[a];
@@ -73,7 +91,9 @@ public class PerguntasPlanetas {
     }
 
 
-
+    /**
+     * Aqui faz-se o push da resposta correta
+     */
     public String getRespostaCorreta(int a) {
         String resposta;
         resposta = RespostasCorretas[a];
