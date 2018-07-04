@@ -21,6 +21,13 @@ public class DbTableCategories implements BaseColumns {
         this.db = db;
     }
 
+
+
+    /**
+     * Cria a tabela categories
+     * Com os parametros Id, name
+     * Onde o _ID é a chave Primaria
+     */
     public void create() {
         db.execSQL(
                 "CREATE TABLE " + TABLE_NAME + "(" +

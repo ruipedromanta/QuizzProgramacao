@@ -7,7 +7,7 @@ package pt.ipg.quizzprogramao;
 public class PerguntasPlanetas {
 
     public String Perguntas [] = {
-            "Quanto é 1 + 1?",
+            "Quaa é o primeiro planeta do sistema solar?",
             "Qual é o segundo planeta do sistema solar?",
             "Qual é o terceiro planeta do sistema solar?",
             "Qual é o quarto planeta do sistema solar?",
@@ -15,7 +15,8 @@ public class PerguntasPlanetas {
             "Qual é o sexto planeta do sistema solar?",
             "Qual é o setimo planeta do sistema solar?",
             "Qual é o oitavo planeta do sistema solar?",
-            "Qual é o nono planeta do sistema solar?"
+            "Qual é o nono planeta do sistema solar?",
+            "Qual é o planeta mais próximo do sol?"
 
     };
 
@@ -23,8 +24,8 @@ public class PerguntasPlanetas {
 
 
     private String Respostas [][] = {
-            {"2", "3", "1", "8"},
-            {"Venus", "Terra", "Marte", "Neptuno"},
+            {"Marte", "Mercurio", "Saturno", "Uránio"},
+            {"Vênus", "Terra", "Marte", "Neptuno"},
             {"Terra", "Venus", "Marte", "Saturno"},
             {"Neptuno", "Venus", "Marte", "Terra"},
             {"Mercurio", "Plutão", "Marte", "Jupiter"},
@@ -32,11 +33,11 @@ public class PerguntasPlanetas {
             {"Uranio", "Venus", "Marte", "Saturno"},
             {"Mercurio", "Neptuno", "Marte", "Saturno"},
             {"Mercurio", "Venus", "Marte", "Plutão"},
-
+            {"Mercurio", "Neptuno", "Marte", "Saturno"}
     };
 
 
-    private String RespostasCorretas [] = {"Mercurio", "Venus", "Terra", "Marte", "Jupiter", "Saturno", "Uranio", "Neptuno", "Plutão"};
+    private String RespostasCorretas [] = {"Mercurio", "Vênus", "Terra", "Marte", "Júpiter", "Saturno", "Uranio", "Neptuno", "Plutão", "Mercurio"};
 
     public String getPergunta(int a){
         String pergunta;

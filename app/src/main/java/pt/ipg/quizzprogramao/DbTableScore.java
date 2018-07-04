@@ -29,6 +29,13 @@ public class DbTableScore implements BaseColumns {
 
 
 
+    /**
+     * Cria a tabela Scores
+     * Com os parametros Id, score e o id player
+     * Onde o _ID é a chave Primaria
+     * e
+     * o id player é a chave estrangeira.
+     */
     public void create() {
         db.execSQL(
                 "CREATE TABLE " + TABLE_NAME +  "(" +

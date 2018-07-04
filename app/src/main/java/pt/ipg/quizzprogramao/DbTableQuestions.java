@@ -22,8 +22,13 @@ public class DbTableQuestions implements BaseColumns {
     }
 
 
-
-
+    /**
+     * Cria a tabela Questions
+     * Com os parametros Id, question e o id score
+     * Onde o _ID é a chave Primaria
+     * e
+     * o id score é a chave estrangeira.
+     */
     public void create() {
         db.execSQL(
                 "CREATE TABLE " + TABLE_NAME + " (" +

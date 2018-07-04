@@ -26,15 +26,21 @@ public class DbTableAnswers implements BaseColumns {
     }
 
 
+
     /**
-     *
+     * Cria a tabela answers
+     * Com os parametros Id, answer e o id question
+     * Onde o _ID é a chave Primaria
      */
     public void create() {
         db.execSQL(
                 "CREATE TABLE " + TABLE_NAME +  " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         FILED_ANSWER + " TEXT NOT NULL," +
-                        FILED_ID_QUESTION + " TEXT NOT NULL" +
+                        FILED_ID_QUESTION + " TEXT NOT NULL," +
+                        "FOREIGN KEY ("+ FILED_ID_QUESTION +")REFERENCES " +
+                        DbTableAnswers.TABLE_NAME +
+                        "(" + DbTableAnswers._ID + ")" +
                         ")"
 
 

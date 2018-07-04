@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">QuizzProgramação</string>
-    <string name="jogar">JOGAR</string>
-    <string name="melhores_pontuaçoes">MELHORES PONTUAÇÕES</string>
-    <string name="sair">SAIR</string>
-    <string name="new_game">new_game</string>
-    <string name="title_activity_edit_player">title_activity_edit_player</string>
-    <string name="title_activity_main3">Main3Activity</string>
-    <string name="planetas">Button</string>
-    <string name="história">Button</string>
-    <string name="desporto">Button</string>
-    <string name="categorias">CATEGORIAS</string>
-    <string name="SAIR">Button</string>
+    <string name="app_name" translatable="false">QuizzProgramação</string>
+    <string name="jogar" translatable="false">JOGAR</string>
+    <string name="melhores_pontuaçoes" translatable="false">MELHORES PONTUAÇÕES</string>
+    <string name="sair" translatable="false">SAIR</string>
+    <string name="new_game" translatable="false">new_game</string>
+    <string name="title_activity_edit_player" translatable="false">title_activity_edit_player</string>
+    <string name="title_activity_main3" translatable="false">Main3Activity</string>
+    <string name="planetas" translatable="false">Button</string>
+    <string name="história" translatable="false">Button</string>
+    <string name="desporto" translatable="false">Button</string>
+    <string name="categorias" translatable="false">CATEGORIAS</string>
+    <string name="SAIR" translatable="false">Button</string>
 </resources>
