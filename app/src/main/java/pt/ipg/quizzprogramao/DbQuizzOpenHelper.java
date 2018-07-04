@@ -20,7 +20,9 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Faz a criação das diferentes tabelas na base de dados
+     * Called when the database is created for the first time. This is where the
+     * creation of tables and the initial population of the tables should happen.
+     *
      */
     @Override
     public void onCreate(SQLiteDatabase db) {

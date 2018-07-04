@@ -99,6 +99,11 @@ public class PlayerCursorAdapter extends RecyclerView.Adapter<PlayerCursorAdapte
         holder.setPlayer(player);
     }
 
+    /**
+     * Returns the total number of items in the data set held by the adapter.
+     *
+     * @return The total number of items in this adapter.
+     */
     @Override
     public int getItemCount() {
        if (cursor == null)return 0;
@@ -128,6 +133,11 @@ public class PlayerCursorAdapter extends RecyclerView.Adapter<PlayerCursorAdapte
 
         }
 
+        /**
+         * Called when a view has been clicked.
+         *
+         * @param v The view that was clicked.
+         */
 
         public void onClick (View v) {
             int position = getAdapterPosition();
