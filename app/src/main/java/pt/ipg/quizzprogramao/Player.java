@@ -8,6 +8,7 @@ public class Player {
     private int id;
     private String name;
     private int best_score;
+    private int idCategory;
 
     public int getId() {
         return id;
@@ -31,5 +32,13 @@ public class Player {
 
     public void setBest_score(int best_score) {
         this.best_score = best_score;
+    }
+
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
     }
 }

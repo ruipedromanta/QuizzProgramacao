@@ -27,6 +27,9 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
         dbTablePlayer.create();
 
+        DbTableCategories dbTableCategories = new DbTableCategories(db);
+        dbTableCategories.create();
+
         DbTableQuestions dbTableQuestions = new DbTableQuestions(db);
         dbTableQuestions.create();
 
@@ -45,19 +48,36 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
         DbTablePlayer dbTablePlayer = new DbTablePlayer(db);
 
 
+        Category category = new Category();
+        category.setName("Planetas");
+        int idCategoryPlanetas = (int) dbTableCategories.insert(DbTableCategories.getContentValues(category));
+
+        category = new Category();
+        category.setName("Desporto");
+        int idCategoryDesporto = (int) dbTableCategories.insert(DbTableCategories.getContentValues(category));
+
+
+        category = new Category();
+        category.setName("História");
+        int idCategoryHistória = (int) dbTableCategories.insert(DbTableCategories.getContentValues(category));
+
+
         Player player = new Player();
         player.setName("Rui");
         player.setBest_score(8);
+        player.setIdCategory(idCategoryDesporto);
         int idPlayerRui = (int) dbTablePlayer.insert(DbTablePlayer.getContentValues(player));
 
         player = new Player();
         player.setName("Pedro");
         player.setBest_score(6);
+        player.setIdCategory(idCategoryHistória);
         int idPlayerPedro = (int) dbTablePlayer.insert(DbTablePlayer.getContentValues(player));
 
         player = new Player();
         player.setName("Juliana");
         player.setBest_score(7);
+        player.setIdCategory(idCategoryPlanetas);
         int idPlayerJuliana = (int) dbTablePlayer.insert(DbTablePlayer.getContentValues(player));
 
 
@@ -141,7 +161,26 @@ public class DbQuizzOpenHelper extends SQLiteOpenHelper {
 
 
 
-
+        /**
+         * Called when the database needs to be upgraded. The implementation
+         * should use this method to drop tables, add tables, or do anything else it
+         * needs to upgrade to the new schema version.
+         * <p>
+         * <p>
+         * The SQLite ALTER TABLE documentation can be found
+         * <a href="http://sqlite.org/lang_altertable.html">here</a>. If you add new columns
+         * you can use ALTER TABLE to insert them into a live table. If you rename or remove columns
+         * you can use ALTER TABLE to rename the old table, then create the new table and then
+         * populate the new table with the contents of the old table.
+         * </p><p>
+         * This method executes within a transaction.  If an exception is thrown, all changes
+         * will automatically be rolled back.
+         * </p>
+         *
+         * @param db         The database.
+         * @param oldVersion The old database version.
+         * @param newVersion The new database version.
+         */
 
     }
     @Override
