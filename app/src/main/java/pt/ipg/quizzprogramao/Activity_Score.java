@@ -43,6 +43,10 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
 
 
 
+
+        /**
+         * Aqui faz-se o encaminhamento do button atrás para abrir a MainActivity
+         */
         button7 = findViewById(R.id.button7);
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +55,8 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
 
             }
         });
+
+
 
 
         recyclerViewPlayer = (RecyclerView) findViewById(R.id.recyclerViewPlayer);
@@ -71,6 +77,9 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
 
     }
 
+    /**
+     * Aqui faz-se o da class EditPlayerActivity
+     */
     private void editPlayer() {
         int id = playerCursorAdapter.getLastPlayerClicked();
 
@@ -82,6 +91,9 @@ public class Activity_Score extends AppCompatActivity implements LoaderManager.L
     }
 
 
+    /**
+     * Aqui faz-se o encaminhamento do button para abrir a ManiActivity
+     */
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
