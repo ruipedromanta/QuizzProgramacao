@@ -5,4 +5,9 @@
     <string name="sair">SAIR</string>
     <string name="new_game">new_game</string>
     <string name="title_activity_edit_player">title_activity_edit_player</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="categoria1">Button</string>
+    <string name="categoria2">Button</string>
+    <string name="categoria3">Button</string>
+    <string name="categorias">CATEGORIAS</string>
 </resources>

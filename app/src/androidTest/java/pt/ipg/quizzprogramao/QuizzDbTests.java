@@ -241,9 +241,9 @@ public class QuizzDbTests {
 
         //Insert/create (C)RUD
 
-        long id = tablePlayer.insert(
-                DbTablePlayer.getContentValues(player)
-        );
+        long id = insertPlayer(tablePlayer, player);
+
+
 
         //query/read C(R)UD
 
@@ -259,7 +259,13 @@ public class QuizzDbTests {
 
         );
 
+
+
         assertEquals("Failed to update player", 1, rowsAffected);
+
+        // query/read C(R)UD
+
+        player = ReadFirstPlayer(tablePlayer, 9, "Pedro", id);
 
         //delete CRU(D)
         rowsAffected = tablePlayer.delete(
@@ -270,7 +276,7 @@ public class QuizzDbTests {
         assertEquals("Failed to delete player", 1, rowsAffected);
 
         Cursor cursor = tablePlayer.query(DbTablePlayer.ALL_COLUMNS, null,null,null,null,null);
-        assertEquals("Players found after delete ????",0, cursor.getCount());
+        assertEquals("Players found after delete ????", 0, cursor.getCount());
 
 
     }
@@ -347,12 +353,12 @@ public class QuizzDbTests {
 
     }
 
-    private long insertPlayer(DbTablePlayer tablePlayer,Player player) {
+    private long insertPlayer(DbTablePlayer tablePlayer, Player player) {
         long id = tablePlayer.insert(
                 DbTablePlayer.getContentValues(player)
         );
 
-        assertNotEquals("Failed to insert a player", -1, id);
+        assertNotEquals("Failed to insert player", -1, id);
 
         return id;
     }

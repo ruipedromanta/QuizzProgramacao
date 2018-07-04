@@ -17,13 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Quizz" />
-        <activity android:name=".Activity_Score"></activity>
+        <activity android:name=".Activity_Score" />
 
         <provider
             android:name=".QuizzContentProvider"
             android:authorities="pt.ipg.quizzprogramao"
-            android:exported="false"
-            />
+            android:exported="false" />
 
         <activity
             android:name=".EditPlayerActivity"
@@ -31,8 +30,9 @@
             android:parentActivityName=".Activity_Score">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="pt.ipg.quizzprogramao.Activity_Score"/>
+                android:value="pt.ipg.quizzprogramao.Activity_Score" />
         </activity>
+        <activity android:name=".Menu2"></activity>
     </application>
 
 </manifest>

@@ -75,7 +75,6 @@ public class QuizzContentProvider extends ContentProvider {
         switch (matcher.match(uri)) {
             case PLAYER:
                 return new DbTablePlayer(db).query(projection, selection, selectionArgs, null, null, sortOrder);
-
             case SCORE:
                 return new DbTableScore(db).query(projection, selection, selectionArgs, null, null, sortOrder);
 

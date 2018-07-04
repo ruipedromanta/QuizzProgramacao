@@ -10,7 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button button;
 
-    Button button9, button10, button11;
+    Button button9, button10, button11, button100;
 
 
 
@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
     public void clickexit(View v){
         moveTaskToBack(true);
         android.os.Process.killProcess(android.os.Process.myPid());
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void openQuizz() {
-        Intent intent = new Intent(this, Quizz.class);
+        Intent intent = new Intent(this, Menu2.class);
         startActivity(intent);
     }
 

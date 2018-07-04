@@ -14,7 +14,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="player name" />
+        tools:text="player name"
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/textViewScore"
@@ -24,5 +25,6 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="8" />
+        tools:text="8"
+        android:layout_marginRight="8dp" />
 </android.support.constraint.ConstraintLayout>
